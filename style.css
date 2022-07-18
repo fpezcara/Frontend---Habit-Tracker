@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+html {
+    /* height: 100%; */
+    background-color: #f6f6f9
+}
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    animation: transitionIn 1s;
+}
+header {
+    background-color: white
+}
+.navbar {
+    height: 90px;
+}
+.logo {
+    color: black;
+    line-height: 90px;
+    font-size: 30px;
+    text-decoration: none;
+    margin-left: 30px;
+    font-family: Orbitron, sans-serif;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: all 0.35s linear 0s;
+}
+.logo:hover {
+    color: rgb(128, 121, 191);
+}
+.links {
+    list-style: none;
+    float: right;
+    line-height: 90px;
+    margin: 0;
+    padding: 0;
+}
+.links li {
+    display: inline-block;
+    margin: 0 20px;
+}
+/*Below is the 'Sign-Up' button styling*/
+.links li a.sign-up {
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+    text-transform: uppercase;
+    transition: all 0.35s linear 0s;
+    font-family: Orbitron, sans-serif;
+}
+.links li a.sign-up:hover {
+    color: rgb(128, 121, 191);
+    border-bottom: none;
+}
+/*Below is the 'Login' button styling*/
+.links li a.login {
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+    text-transform: uppercase;
+    transition: all 0.35s linear 0s;
+    padding-bottom: 6px;
+    font-family: Orbitron, sans-serif;
+}
+.links li a.login:hover {
+    color: rgb(128, 121, 191);
+    padding-bottom: 6px;
+}
+
+#isChecked {
+    display: none;
+}
