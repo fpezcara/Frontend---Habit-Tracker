@@ -1,21 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
-/* html {
+html {
     /* height: 100%; */
-<<<<<<< HEAD
-/* background-color: #f6f6f9 */
-/*} */
-=======background-color: #f6f6f9;
+    background-color: #f6f6f9;
 }
 
->>>>>>>harry body {
+body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    <<<<<<< HEAD animation: transitionIn 1s;
-    /* background: #f6f6f9; */
-    background: gray;
-    =======>>>>>>>harry
 }
 
 header {
