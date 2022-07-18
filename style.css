@@ -1,15 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
-html {
+/* html {
     /* height: 100%; */
-    background-color: #f6f6f9
-}
+    /* background-color: #f6f6f9 */
+/*} */
 
 body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     animation: transitionIn 1s;
+    /* background: #f6f6f9; */
+    background: gray;
 }
 
 header {
@@ -82,4 +84,23 @@ header {
 
 #isChecked {
     display: none;
+}
+
+
+#addNewHabit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 40vh;
+    gap: 1em;
+}
+
+#addNewHabit legend{
+    text-align: center;
+}
+
+.title{
+    font-size: 32px;
+    color: blue;
 }
