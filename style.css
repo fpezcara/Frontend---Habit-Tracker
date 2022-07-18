@@ -4,18 +4,22 @@ html {
     /* height: 100%; */
     background-color: #f6f6f9
 }
+
 body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     animation: transitionIn 1s;
 }
+
 header {
-    background-color: whiteg
+    background-color: white;
 }
+
 .navbar {
     height: 90px;
 }
+
 .logo {
     color: black;
     line-height: 90px;
@@ -27,9 +31,11 @@ header {
     font-weight: 500;
     transition: all 0.35s linear 0s;
 }
+
 .logo:hover {
     color: rgb(128, 121, 191);
 }
+
 .links {
     list-style: none;
     float: right;
@@ -37,10 +43,12 @@ header {
     margin: 0;
     padding: 0;
 }
+
 .links li {
     display: inline-block;
     margin: 0 20px;
 }
+
 /*Below is the 'Sign-Up' button styling*/
 .links li a.sign-up {
     color: black;
@@ -50,10 +58,12 @@ header {
     transition: all 0.35s linear 0s;
     font-family: Orbitron, sans-serif;
 }
+
 .links li a.sign-up:hover {
     color: rgb(128, 121, 191);
     border-bottom: none;
 }
+
 /*Below is the 'Login' button styling*/
 .links li a.login {
     color: black;
@@ -64,6 +74,7 @@ header {
     padding-bottom: 6px;
     font-family: Orbitron, sans-serif;
 }
+
 .links li a.login:hover {
     color: rgb(128, 121, 191);
     padding-bottom: 6px;
