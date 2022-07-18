@@ -16,7 +16,8 @@ home.addEventListener("click", function(e){
     header.classList.add("headerToFadeInAndOut");
     setTimeout(function(){signup.classList.remove("headerToFadeInAndOut");}, 1500);
     header.style.opacity = "0";
-    
+
+    setTimeout(function(){
     html.classList.add("backgroundToFadeInAndOut");
     setTimeout(function(){html.classList.remove("backgroundToFadeInAndOut");}, 1500);
     html.style.opacity = "0";
@@ -24,5 +25,6 @@ home.addEventListener("click", function(e){
     setTimeout(function() {
         window.location.href = "./index.html"
     }, 600);
+}, 1000)
 
   });
