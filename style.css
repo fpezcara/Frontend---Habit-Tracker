@@ -2,20 +2,27 @@
 
 /* html {
     /* height: 100%; */
-    /* background-color: #f6f6f9 */
+<<<<<<< HEAD
+/* background-color: #f6f6f9 */
 /*} */
+=======background-color: #f6f6f9;
+}
 
-body {
+>>>>>>>harry body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    animation: transitionIn 1s;
+    <<<<<<< HEAD animation: transitionIn 1s;
     /* background: #f6f6f9; */
     background: gray;
+    =======>>>>>>>harry
 }
 
 header {
     background-color: white;
+    animation: fadeIn 1s ease-out;
+    animation-delay: 0.2s;
+    animation-fill-mode: backwards;
 }
 
 .navbar {
@@ -32,6 +39,10 @@ header {
     text-transform: uppercase;
     font-weight: 500;
     transition: all 0.35s linear 0s;
+    animation: fadeIn 1s ease-out;
+    animation-delay: 0.3s;
+    animation-fill-mode: backwards;
+
 }
 
 .logo:hover {
@@ -44,6 +55,9 @@ header {
     line-height: 90px;
     margin: 0;
     padding: 0;
+    animation: fadeIn 1s ease-out;
+    animation-delay: 0.7s;
+    animation-fill-mode: backwards;
 }
 
 .links li {
@@ -96,11 +110,17 @@ header {
     gap: 1em;
 }
 
-#addNewHabit legend{
+#addNewHabit legend {
     text-align: center;
 }
 
-.title{
+.title {
     font-size: 32px;
     color: blue;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
 }
