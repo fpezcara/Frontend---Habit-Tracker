@@ -5,27 +5,33 @@ html {
     background: linear-gradient(#141e30, #243b55);
     animation: fadeIn 1s ease-out;
     animation-fill-mode: backwards;
+    animation-direction: normal;
 }
 
 header {
-    animation: fadeIn 1s ease-out;
+    animation: fadeIn 0.5s ease-out;
     animation-delay: 1s;
     animation-fill-mode: backwards;
+    animation-direction: normal;
 }
 
 .signup-box {
-    animation: fadeIn 1s ease-out;
+    animation: fadeIn 0.5s ease-out;
     animation-delay: 1s;
     animation-fill-mode: backwards;
+    animation-direction: normal;
 }
 
-
-.logo {
-    animation-delay: 0.7s;
+.elementToFadeInAndOut {
+    animation: fadeOut 0.5s ease-in
 }
 
-.links {
-    animation-delay: 1s;
+.headerToFadeInAndOut {
+    animation: fadeOut 0.5s ease-in;
+}
+
+.backgroundToFadeInAndOut {
+    animation: fadeOut 0.5s ease-in;
 }
 
 .signup-box {
@@ -34,7 +40,7 @@ top: 50%;
 left: 50%;
 width: 400px;
 padding: 40px;
-transform: translate(-50%, -50%);
+transform: translate(-50%, -55%);
 background: rgba(0, 0, 0, 0.5);
 box-sizing: border-box;
 box-shadow: 0 15px 25px rgba(0,0,0,.6);

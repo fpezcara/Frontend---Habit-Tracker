@@ -3,6 +3,9 @@
 html {
     /* height: 100%; */
     background-color: #f6f6f9;
+    animation: fadeIn 1s ease-out;
+    animation-delay: 0.2s;
+    animation-fill-mode: backwards;
 }
 
 body {
@@ -97,4 +100,13 @@ header {
     from {
       opacity: 0;
     }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+}
 }
