@@ -2,7 +2,7 @@
   "name": "frontend-habit-tracker",
   "version": "1.0.0",
   "description": "Habit Tracker app",
-  "main": "script.js",
+  "main": "./assets/static/js/script.js",
   "scripts": {
     "test": "jest --watchAll"
   },
