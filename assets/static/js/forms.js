@@ -66,6 +66,7 @@ const renderLoginForm = () => {
         placeholder: "Enter your email address",
         id: "email",
       },
+      label: "Email",
     },
     {
       tag: "input",
@@ -75,36 +76,57 @@ const renderLoginForm = () => {
         placeholder: "Enter your password",
         id: "password",
       },
+      label: "Password",
     },
-    {
-      tag: "input",
-      attributes: {
-        type: "submit",
-        value: "Sign in",
-        id: "password",
-      },
-    },
+    // {
+    //   tag: "a",
+    //   attributes: {
+    //     href: "#",
+    //   },
+    // },
   ];
 
-  const form = document.createElement("form");
+  //   <a href="#">
+  //   <span></span>
+  //   <span></span>
+  //   <span></span>
+  //   <span></span>
+  //   Login
+  // </a>
+
   const formContainer = document.createElement("div");
   formContainer.className = "signup-box";
-  form.appendChild(formContainer);
+  const form = document.createElement("form");
+  const h2 = document.createElement("h2");
+  h2.textContent = "Enter your details";
 
-  console.log("form after formContainer is appended", formContainer);
-  fields.forEach(({ tag, attributes }) => {
+  formContainer.append(h2, form);
+  // console.log("form after formContainer is appended", formContainer);
+  const aTag = document.createElement("a");
+  aTag.setAttribute("href", "#");
+  aTag.innerHTML = `
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  Login
+  `;
+  fields.forEach(({ tag, attributes, label: labelText }) => {
     const field = document.createElement(tag);
+    const label = document.createElement("label");
+    label.textContent = labelText;
+
     const fieldContainer = document.createElement("div");
     fieldContainer.className = "user-box";
-
     Object.entries(attributes).forEach(([a, v]) => {
       field.setAttribute(a, v);
-      fieldContainer.appendChild(field);
-      formContainer.appendChild(fieldContainer);
+      fieldContainer.append(field, label);
+
+      form.append(fieldContainer, aTag);
     });
   });
-
-  return form;
+  form.addEventListener('submit', requestLogin)
+  return formContainer;
 };
 
 // function renderRegisterForm() {

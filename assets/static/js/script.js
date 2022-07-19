@@ -32,12 +32,12 @@ const updateHomepage = (hash) => {
       form = renderLoginForm();
       break;
     case "signup":
-      console.log("im signing up")
+      form = renderRegisterForm();
       // form = renderLoginForm();
       break;
   }
+
   main.appendChild(form);
-  console.log(main);
   // if (hash == "login") {
   //   const form = renderHabitsForm();
   //   console.log("signup", renderHabitsForm())
@@ -74,5 +74,6 @@ const updateHomepage = (hash) => {
 }
 window.addEventListener("hashchange", () => {
   let hash = window.location.hash.substring(1);
+  console.log(hash)
   main && updateHomepage(hash);
 });
