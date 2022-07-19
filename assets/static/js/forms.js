@@ -56,49 +56,15 @@ const renderHabitsForm = () => {
   return form;
 };
 
-{
-  /* <div class="user-box">
-<input type="text" name="" required="">
-<label>First Name</label>
-</div>
-<div class="user-box">
-<input type="password" name="" required="">
-<label>Last Name</label>
-</div>
-<div class="user-box">
-<input type="password" name="" required="">
-<label>Email</label>
-</div>
-<div class="user-box">
-<input type="password" name="" required="">
-<label>Password</label>
-</div>
-<a href="#">
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-Sign Up
-</a> */
-}
-const renderRegisterForm = () => {
+const renderLoginForm = () => {
   const fields = [
     {
       tag: "input",
       attributes: {
-        type: "text",
-        name: "firstName",
-        placeholder: "Enter your first name",
-        id: "firstName",
-      },
-    },
-    {
-      tag: "input",
-      attributes: {
-        type: "text",
-        name: "lastName",
-        placeholder: "Enter your last name",
-        id: "lastName",
+        type: "email",
+        name: "email",
+        placeholder: "Enter your email address",
+        id: "email",
       },
     },
     {
@@ -106,11 +72,39 @@ const renderRegisterForm = () => {
       attributes: {
         type: "password",
         name: "password",
-        placeholder: "Enter your first password",
+        placeholder: "Enter your password",
+        id: "password",
+      },
+    },
+    {
+      tag: "input",
+      attributes: {
+        type: "submit",
+        value: "Sign in",
         id: "password",
       },
     },
   ];
+
+  const form = document.createElement("form");
+  const formContainer = document.createElement("div");
+  formContainer.className = "signup-box";
+  form.appendChild(formContainer);
+
+  console.log("form after formContainer is appended", formContainer);
+  fields.forEach(({ tag, attributes }) => {
+    const field = document.createElement(tag);
+    const fieldContainer = document.createElement("div");
+    fieldContainer.className = "user-box";
+
+    Object.entries(attributes).forEach(([a, v]) => {
+      field.setAttribute(a, v);
+      fieldContainer.appendChild(field);
+      formContainer.appendChild(fieldContainer);
+    });
+  });
+
+  return form;
 };
 
 // function renderRegisterForm() {

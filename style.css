@@ -107,13 +107,22 @@ header {
     text-align: center;
 }
 
-.title {
-    font-size: 32px;
-    color: blue;
-}
 
 @keyframes fadeIn {
     from {
         opacity: 0;
     }
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    margin: 20px auto;
+    width: 50%;
+}
+
+input {
+    padding: 10px;
+    margin: 5px;
 }

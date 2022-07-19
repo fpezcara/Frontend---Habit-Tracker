@@ -26,14 +26,28 @@ const loginButton = document.querySelector(".login");
 const updateHomepage = (hash) => {
   //?if user is logged in we show the "add new habit", if not signed in then straight to "sign in" form
   main.innerHTML = "";
-
-  if (hash == "login") {
-    const form = createForm();
-    main.appendChild(form);
+  let form;
+  switch (hash) {
+    case "login":
+      form = renderLoginForm();
+      break;
+    case "signup":
+      console.log("im signing up")
+      // form = renderLoginForm();
+      break;
   }
-  if(hash == "signup"){
-
-  }
+  main.appendChild(form);
+  console.log(main);
+  // if (hash == "login") {
+  //   const form = renderHabitsForm();
+  //   console.log("signup", renderHabitsForm())
+  //   main.appendChild(form);
+  // }
+  // if (hash == "signup") {
+  //   const form = renderLoginForm();
+  //   console.log("signup", renderLoginForm())
+  //   main.appendChild(form);
+  // }
 };
 
 {
@@ -61,5 +75,4 @@ const updateHomepage = (hash) => {
 window.addEventListener("hashchange", () => {
   let hash = window.location.hash.substring(1);
   main && updateHomepage(hash);
-  createForm();
 });
