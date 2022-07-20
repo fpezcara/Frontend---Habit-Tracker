@@ -180,7 +180,12 @@ const renderHabitsForm = () => {
     },
   ];
 
+  const formContainer = document.createElement("div");
+  formContainer.className = "signup-box habit";
   const form = document.createElement("form");
+  const h2 = document.createElement("h2");
+  h2.textContent = "Add a new habit";
+  formContainer.append(h2, form);
   fields.forEach(({ tag, attributes, options }) => {
     const field = document.createElement(tag);
     const fieldContainer = document.createElement("div");
@@ -197,12 +202,14 @@ const renderHabitsForm = () => {
         option.value = value;
         option.textContent = value.toUpperCase();
         field.appendChild(option);
+        fieldContainer.appendChild(field);
+        form.appendChild(fieldContainer);
       });
   });
 
-  console.log(form);
   form.addEventListener("submit", createNewHabit);
-  main.appendChild(form);
+  main.appendChild(formContainer);
+  console.log(main);
 };
 
 const login = (data) => {

@@ -92,7 +92,7 @@ header {
   font-size: 10px;
 }
 
-.signup-box form input[type="submit"] {
+.signup-box form input[type="submit"], select {
   position: relative;
   display: inline-block;
   padding: 10px 20px;
@@ -221,4 +221,24 @@ header {
 .logout-btn{
   text-decoration: none;
   color: black;
+}
+
+.habit {
+  background: #03e9f4;
+  box-shadow: #003a3d;
+  color: rgba(0, 0, 0, .6);
+}
+
+
+.habit .user-box select{
+  background: #fff;
+  color: rgba(0, 0, 0, .6);
+  padding: 5px 10px;
+  border-radius: 1em;
+  cursor: pointer;
+}
+
+.habit .user-box:last-child{
+  width: 70%;
+  border-radius: 1.1em;
 }
