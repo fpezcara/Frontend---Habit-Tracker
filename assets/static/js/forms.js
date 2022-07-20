@@ -1,4 +1,3 @@
-// create form to add new habit
 const main = document.querySelector("main");
 
 const renderLoginForm = () => {
@@ -111,7 +110,7 @@ const renderRegistrationForm = () => {
     { tag: "input", attributes: { type: "submit", value: "Register" } },
   ];
   const formContainer = document.createElement("div");
-  formContainer.className = "signup-box";
+  formContainer.className = "signup-box registrationContainer";
   const form = document.createElement("form");
   const h2 = document.createElement("h2");
   h2.textContent = "Enter your details";
@@ -154,6 +153,7 @@ const renderHabitsForm = () => {
         id: "newHabit",
       },
     },
+    // { tag: "label", for: "newHabit" },
     {
       tag: "input",
       attributes: {
@@ -164,14 +164,24 @@ const renderHabitsForm = () => {
       },
     },
     {
-      tag: "select",
-      attributes: { type: "checkbox", name: "frequency", id: "frequency" },
-      options: [
-        { value: "select" },
-        { value: "daily" },
-        { value: "weekly" },
-        { value: "monthly" },
-      ],
+      tag: "input",
+      attributes: {
+        type: "date",
+        id: "initialDate",
+        name: "end_date",
+        class: "datePicker",
+      },
+      label: { text: "Start Date", for: "initialDate" },
+    },
+    {
+      tag: "input",
+      attributes: {
+        type: "date",
+        id: "endDate",
+        name: "end_date",
+        class: "datePicker",
+      },
+      label: { text: "End Date", for: "endDate" },
     },
     {
       tag: "input",
@@ -180,34 +190,36 @@ const renderHabitsForm = () => {
   ];
 
   const formContainer = document.createElement("div");
-  formContainer.className = "signup-box habit";
+  formContainer.className = "signup-box newHabitContainer";
   const form = document.createElement("form");
   const h2 = document.createElement("h2");
-  h2.textContent = "Add a new habit";
+  h2.textContent = "Create a new habit";
   formContainer.append(h2, form);
-  fields.forEach(({ tag, attributes, options }) => {
+  fields.forEach(({ tag, attributes, label }) => {
     const field = document.createElement(tag);
     const fieldContainer = document.createElement("div");
+    const labelTag = document.createElement("label");
+
     fieldContainer.className = "user-box";
     Object.entries(attributes).forEach(([a, v]) => {
       field.setAttribute(a, v);
       fieldContainer.appendChild(field);
       form.appendChild(fieldContainer);
+      if (label) {
+        labelTag.textContent = label.text;
+        Object.entries(label).forEach(([a, v]) => {
+          a === "for" && labelTag.setAttribute(a, v);
+        });
+      }
     });
 
-    tag === "select" &&
-      options.forEach(({ value }) => {
-        const option = document.createElement("option");
-        option.value = value;
-        option.textContent = value.toUpperCase();
-        field.appendChild(option);
-        fieldContainer.appendChild(field);
-        form.appendChild(fieldContainer);
-      });
+    label && fieldContainer.appendChild(labelTag);
+    console.log(fieldContainer);
   });
 
   form.addEventListener("submit", createNewHabit);
   main.appendChild(formContainer);
+
   console.log(main);
 };
 
@@ -223,8 +235,6 @@ const login = (data) => {
   updateNav();
   location.hash = "#home";
 };
-
-//!! HARRY
 
 const renderHabits = () => {
   main.innerHTML = `
@@ -247,19 +257,7 @@ const renderHabits = () => {
    <a href="#new-habit" id="new-habit">new habit</a>
   
   `;
-console.log(main);
 };
-
-{
-  /* <header><a href="#new-habit" class="logout-btn">Add new habit</a></header>
-<h1>Your goals</h1>
-<section>
-<ul>
-<li>Your habit</li>
-</ul>
-</section>
-`; */
-}
 
 const currentUser = () => {
   const username = localStorage.getItem("username");
@@ -278,14 +276,6 @@ const renderProfile = () => {
   <p>Profile information</p>
   `;
 };
-
-// const navBar = document.querySelector(".links");
-// const updateNav = () => {
-//   navBar.innerHTML = `
-//   <li><a href="#home" class="sign-up">Home</a></li>
-//   <li><a href="#profile" class="sign-up">Profile</a></li>
-//   <li><a href="#logout" class="logout">Logout</a></li>
-// `;
 
 const navBar = document.querySelector(".links");
 function updateNav() {
