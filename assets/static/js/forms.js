@@ -61,8 +61,6 @@ const renderLoginForm = () => {
     form.appendChild(fieldContainer);
   });
 
-  // aTag.onclick = handleClick;
-
   form.addEventListener("submit", requestLogin);
   main.appendChild(formContainer);
 };
