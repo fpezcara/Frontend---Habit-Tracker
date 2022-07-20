@@ -12,9 +12,13 @@ const requestLogin = async (e) => {
     const data = await r.json();
 
     if (data.err) {
+      console.log(data.err)
       throw Error(data.err);
     }
     console.log("data", data);
+    login(data);
+    //*We need to create the authorisation so then this function will takes us to the #feed or #habits
+
   } catch (err) {
     console.warn(`Error: ${err}`);
   }

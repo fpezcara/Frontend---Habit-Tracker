@@ -69,7 +69,11 @@ const renderRegistrationForm = () => {
   const fields = [
     {
       tag: "input",
-      attributes: { type: "email", name: "email", placeholder: "Enter your email" },
+      attributes: {
+        type: "email",
+        name: "email",
+        placeholder: "Enter your email",
+      },
     },
     {
       tag: "input",
@@ -90,7 +94,11 @@ const renderRegistrationForm = () => {
 
     {
       tag: "input",
-      attributes: { type: "password", name: "user_password", placeholder: "Password" },
+      attributes: {
+        type: "password",
+        name: "user_password",
+        placeholder: "Password",
+      },
     },
     // {
     //   tag: "input",
@@ -191,7 +199,6 @@ const renderHabitsForm = () => {
   return form;
 };
 
-
 const login = (data) => {
   // localStorage.setItem('username', data.user);
   // const payload = jwt_decode(data.token);
@@ -200,9 +207,10 @@ const login = (data) => {
   // localStorage.setItem("token", data.token);
   // localStorage.setItem("username", payload.username);
   // localStorage.setItem("email", payload.email);
-
-  location.hash = "#feed";
-}
+  console.log(data);
+  updateNav();
+  location.hash = "#habits";
+};
 
 // const logout = () => {
 //   localStorage.clear();
@@ -212,11 +220,10 @@ const login = (data) => {
 const currentUser = () => {
   const username = localStorage.getItem("username");
   return username;
-}
-
+};
 
 const render404 = () => {
-  const error = document.createElement('h2');
+  const error = document.createElement("h2");
   error.textContent = "Oops, we can't find that page sorry!";
   main.appendChild(error);
-}
+};
