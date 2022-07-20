@@ -22,8 +22,8 @@ const navBar = document.querySelector(".links");
 const updateNav = () => {
 
   navBar.innerHTML = `
-  <li><a href="#habits">Habits</a></li>
-  <li><a href="#profile" class="sign-up">Sign Up</a></li>
+  <li><a href="#home" class="sign-up">Home</a></li>
+  <li><a href="#profile" class="sign-up">Profile</a></li>
   <li><a href="#logout">Logout</a></li>
   `;
 };
