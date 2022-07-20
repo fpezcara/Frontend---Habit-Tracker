@@ -12,6 +12,8 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: #141e30;
+    /*background: linear-gradient(#141e30, #243b55); */
 }
 
 header {
@@ -90,6 +92,13 @@ header {
 .links li a.login:hover {
     color: rgb(128, 121, 191);
     padding-bottom: 6px;
+}
+
+.links li a.logout {
+    color: rgb(128, 121, 191);
+    font-size: 15px;
+    transition: all 0.35s linear 0s;
+    font-family: Orbitron, sans-serif;
 }
 
 #isChecked {

@@ -37,7 +37,7 @@ header {
 
 .signup-box {
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 50%;
   width: 400px;
   padding: 40px;
@@ -92,7 +92,14 @@ header {
   font-size: 10px;
 }
 
-.signup-box form input[type="submit"] {
+
+p {
+  color: white;
+  font-family: Orbitron, sans-serif;
+}
+
+.signup-box form input[type="submit"],
+select {
   position: relative;
   display: inline-block;
   padding: 10px 20px;
@@ -110,7 +117,7 @@ header {
 
 }
 
-.signup-box .user-box:last-child{
+.signup-box .user-box:last-child {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -218,4 +225,64 @@ header {
   }
 }
 
+.logout-btn {
+  text-decoration: none;
+  color: black;
+}
 
+.habit {
+  background: #03e9f4;
+  box-shadow: #003a3d;
+  color: rgba(0, 0, 0, .6);
+}
+
+
+.habit .user-box select {
+  background: #fff;
+  color: rgba(0, 0, 0, .6);
+  padding: 5px 10px;
+  border-radius: 1em;
+  cursor: pointer;
+}
+
+.habit .user-box:last-child {
+  width: 70%;
+  border-radius: 1.1em;
+}
+
+.habits {
+  top: 58%;
+}
+
+.new-habit-btn {
+  position: absolute;
+  /* right: 10%; */
+  top: 20%;
+  left: 80%;
+
+}
+
+#new-habit {
+  color: black;
+  position: absolute;
+  /* right: 10%; */
+  top: 20%;
+  left: 80%;
+  text-transform: uppercase;
+  padding: 1em 0.5em;
+  text-decoration: none;
+  border-radius: 1em;
+  width: 8em;
+  text-align: center;
+  background: #03e9f4;
+  box-shadow: #003a3d;
+  font-family: Orbitron, sans-serif;
+  font-weight: 500;
+  color: #fff;
+  transition: .8s;
+  animation: fadeIn 1s ease-out;
+  animation-fill-mode: backwards;
+  animation-direction: normal;
+  animation-delay: .25s
+
+}
