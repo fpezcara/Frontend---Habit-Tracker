@@ -110,7 +110,7 @@ const renderRegistrationForm = () => {
     { tag: "input", attributes: { type: "submit", value: "Register" } },
   ];
   const formContainer = document.createElement("div");
-  formContainer.className = "signup-box";
+  formContainer.className = "signup-box registrationContainer";
   const form = document.createElement("form");
   const h2 = document.createElement("h2");
   h2.textContent = "Enter your details";
@@ -163,16 +163,6 @@ const renderHabitsForm = () => {
         id: "nOfRepetitions",
       },
     },
-    // {
-    //   tag: "select",
-    //   attributes: { type: "checkbox", name: "frequency", id: "frequency" },
-    //   options: [
-    //     { value: "select" },
-    //     { value: "daily" },
-    //     { value: "weekly" },
-    //     { value: "monthly" },
-    //   ],
-    // },
     {
       tag: "input",
       attributes: {
@@ -205,19 +195,31 @@ const renderHabitsForm = () => {
   const h2 = document.createElement("h2");
   h2.textContent = "Create a new habit";
   formContainer.append(h2, form);
-  fields.forEach(({ tag, attributes}) => {
+  fields.forEach(({ tag, attributes, label }) => {
     const field = document.createElement(tag);
     const fieldContainer = document.createElement("div");
+    const labelTag = document.createElement("label");
+
     fieldContainer.className = "user-box";
     Object.entries(attributes).forEach(([a, v]) => {
       field.setAttribute(a, v);
       fieldContainer.appendChild(field);
       form.appendChild(fieldContainer);
+      if (label) {
+        labelTag.textContent = label.text;
+        Object.entries(label).forEach(([a, v]) => {
+          a === "for" && labelTag.setAttribute(a, v);
+        });
+      }
     });
+
+    label && fieldContainer.appendChild(labelTag);
+    console.log(fieldContainer);
   });
 
   form.addEventListener("submit", createNewHabit);
   main.appendChild(formContainer);
+
   console.log(main);
 };
 
@@ -255,7 +257,6 @@ const renderHabits = () => {
    <a href="#new-habit" id="new-habit">new habit</a>
   
   `;
-  console.log(main);
 };
 
 const currentUser = () => {

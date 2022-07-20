@@ -1,6 +1,7 @@
 @import url(./style.css);
 
-html, main {
+html,
+main {
   height: 100vh;
   background: linear-gradient(#141e30, #243b55);
   animation: fadeIn 1s ease-out;
@@ -8,8 +9,8 @@ html, main {
   animation-direction: normal;
 }
 
-main{
-  height: 95vh;
+main {
+  height: 100%;
 }
 
 header {
@@ -76,6 +77,7 @@ header {
   background: transparent;
 }
 
+
 .signup-box .user-box label {
   position: absolute;
   top: 0;
@@ -88,8 +90,16 @@ header {
   font-family: Orbitron, sans-serif;
 }
 
-.signup-box .user-box input:focus~label:not(input[type="submit"]),
-.signup-box .user-box input:valid~label:not(input[type="submit"]) {
+/* .signup-box .user-box input:focus~label:not(input[type="submit"]):not(input[type="date"]),
+.signup-box .user-box input:valid~label:not(input[type="submit"]):not(input[type="date"]) {
+  top: -20px;
+  left: 0;
+  color: #03e9f4;
+  font-size: 10px;
+} */
+
+.signup-box .user-box input:not(input[type="submit"], input[type="date"]):focus~label,
+.signup-box .user-box input:not(input[type="submit"], input[type="date"]):valid~label {
   top: -20px;
   left: 0;
   color: #03e9f4;
@@ -102,8 +112,7 @@ p {
   font-family: Orbitron, sans-serif;
 }
 
-.signup-box form input[type="submit"],
-select {
+.signup-box form input[type="submit"] {
   position: relative;
   display: inline-block;
   padding: 10px 20px;
@@ -234,10 +243,14 @@ select {
   color: black;
 }
 
+.registrationContainer .user-box:last-child {
+  width: 11em;
+}
+
 .newHabitContainer {
   background: #03e9f4;
   box-shadow: #003a3d;
-  top: 60%;
+  top: 65%;
 }
 
 .newHabitContainer input::placeholder {
@@ -245,20 +258,33 @@ select {
 }
 
 .newHabitContainer .user-box:nth-child(3),
-.user-box:nth-child(4) {
-  width: 8.3em;
+.newHabitContainer .user-box:nth-child(4) {
+  width: 15em;
   padding: 0.5em;
   box-sizing: border-box;
-  overflow: hidden;
+  font-size: 12px;
 
+  /* height: 400px; */
 }
 
-/* .newHabitContainer .user-box:nth-child(3)::placeholder, .user-box:nth-child(4)::placeholder{
-  width: 8em;
-  padding: 0.5em;
-  color: orange;
+.newHabitContainer .user-box:nth-child(3) label,
+.newHabitContainer .user-box:nth-child(4) label {
+  /* background-color: #003a3d; */
+  /* top: -20px; */
 
-} */
+  /* display: inline-block; */
+
+  /* background: red; */
+  /* height: 400px; */
+}
+
+.signup-box .user-box input[type="date"]:focus~label,
+.signup-box .user-box input[type="date"]:valid~label {
+  top: -20px;
+  color: rgba(0, 0, 0, 0.5);
+
+
+}
 
 .datePicker::-webkit-calendar-picker-indicator {
   /* color: #fff; */
@@ -266,9 +292,11 @@ select {
   color: orange;
 }
 
+
 .newHabitContainer .user-box:last-child {
   width: 70%;
   border-radius: 1.1em;
+  margin: 0 auto;
 }
 
 .habits {
