@@ -143,7 +143,6 @@ const renderRegistrationForm = () => {
   main.appendChild(formContainer);
 };
 
-//!! FLO
 const renderHabitsForm = () => {
   const fields = [
     {
@@ -229,15 +228,38 @@ const login = (data) => {
 
 const renderHabits = () => {
   main.innerHTML = `
-  <header><a href="#new-habit" class="logout-btn">Add new habit</a></header>
-  <h1>Your goals</h1>
-  <section>
-  <ul>
-  <li>Your habit</li>
-  </ul>
-  </section>
+  <div class="signup-box habits">
+    <h2>Your Goals!</h2>
+
+        <p>Habit:</p>
+        <p class="habit-name">Water Intake</p><br>
+
+        <p>Goal:</p>
+        <p class="habit-goal">5 Cups Per Day</p><br>
+
+        <p>How Long For:</p>
+        <p class="habit-duration">A Week</p><br>
+
+        <p>How's Today Looking?</p>
+        <p class="habit-amount">3 Cups</p>
+   </div>
+ 
+   <a href="#new-habit" id="new-habit">new habit</a>
+  
   `;
+console.log(main);
 };
+
+{
+  /* <header><a href="#new-habit" class="logout-btn">Add new habit</a></header>
+<h1>Your goals</h1>
+<section>
+<ul>
+<li>Your habit</li>
+</ul>
+</section>
+`; */
+}
 
 const currentUser = () => {
   const username = localStorage.getItem("username");
