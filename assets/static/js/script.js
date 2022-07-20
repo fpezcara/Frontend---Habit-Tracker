@@ -31,6 +31,8 @@ const updateHomepage = (hash) => {
     case "signup":
       renderRegistrationForm();
       break;
+    default:
+      render404();
   }
 
 };

@@ -131,8 +131,6 @@ const renderRegistrationForm = () => {
     form.appendChild(fieldContainer);
   });
 
-  // aTag.onclick = handleClick;
-
   form.addEventListener("submit", requestRegistration);
   main.appendChild(formContainer);
 };
@@ -192,3 +190,33 @@ const renderHabitsForm = () => {
 
   return form;
 };
+
+
+const login = (data) => {
+  // localStorage.setItem('username', data.user);
+  // const payload = jwt_decode(data.token);
+  // console.log(data);
+  // console.log(payload);
+  // localStorage.setItem("token", data.token);
+  // localStorage.setItem("username", payload.username);
+  // localStorage.setItem("email", payload.email);
+
+  location.hash = "#feed";
+}
+
+// const logout = () => {
+//   localStorage.clear();
+//   location.hash = "#login";
+// }
+
+const currentUser = () => {
+  const username = localStorage.getItem("username");
+  return username;
+}
+
+
+const render404 = () => {
+  const error = document.createElement('h2');
+  error.textContent = "Oops, we can't find that page sorry!";
+  main.appendChild(error);
+}
