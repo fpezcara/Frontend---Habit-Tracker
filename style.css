@@ -2,18 +2,23 @@
 
 html {
     /* height: 100%; */
-    background-color: #f6f6f9
+    background-color: #f6f6f9;
+    animation: fadeIn 1s ease-out;
+    animation-delay: 0.2s;
+    animation-fill-mode: backwards;
 }
 
 body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    animation: transitionIn 1s;
 }
 
 header {
     background-color: white;
+    animation: fadeIn 1s ease-out;
+    animation-delay: 0.2s;
+    animation-fill-mode: backwards;
 }
 
 .navbar {
@@ -30,6 +35,10 @@ header {
     text-transform: uppercase;
     font-weight: 500;
     transition: all 0.35s linear 0s;
+    animation: fadeIn 1s ease-out;
+    animation-delay: 0.3s;
+    animation-fill-mode: backwards;
+
 }
 
 .logo:hover {
@@ -42,6 +51,9 @@ header {
     line-height: 90px;
     margin: 0;
     padding: 0;
+    animation: fadeIn 1s ease-out;
+    animation-delay: 0.7s;
+    animation-fill-mode: backwards;
 }
 
 .links li {
@@ -81,5 +93,25 @@ header {
 }
 
 #isChecked {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.noDisplay {
     display: none;
 }

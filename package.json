@@ -1,0 +1,28 @@
+{
+  "name": "frontend-habit-tracker",
+  "version": "1.0.0",
+  "description": "Habit Tracker app",
+  "main": "./assets/static/js/script.js",
+  "scripts": {
+    "test": "jest --watchAll"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fpezcara/Frontend-Habit-Tracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fpezcara/Frontend-Habit-Tracker/issues"
+  },
+  "homepage": "https://github.com/fpezcara/Frontend---Habit-Tracker#readme",
+  "devDependencies": {
+    "jest": "^28.1.3",
+    "jest-environment-jsdom": "^28.1.3",
+    "jsdom": "^20.0.0"
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
+  }
+}
