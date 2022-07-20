@@ -29,22 +29,10 @@ const updateHomepage = (hash) => {
       renderLoginForm();
       break;
     case "signup":
-      console.log("signup");
-      //  renderRegisterForm();
-      // form = renderLoginForm();
+      renderRegistrationForm();
       break;
   }
 
-  // if (hash == "login") {
-  //   const form = renderHabitsForm();
-  //   console.log("signup", renderHabitsForm())
-  //   main.appendChild(form);
-  // }
-  // if (hash == "signup") {
-  //   const form = renderLoginForm();
-  //   console.log("signup", renderLoginForm())
-  //   main.appendChild(form);
-  // }
 };
 
 {
