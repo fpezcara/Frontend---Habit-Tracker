@@ -143,6 +143,7 @@ const renderRegistrationForm = () => {
   main.appendChild(formContainer);
 };
 
+//!! FLO
 const renderHabitsForm = () => {
   const fields = [
     {
@@ -182,9 +183,12 @@ const renderHabitsForm = () => {
   const form = document.createElement("form");
   fields.forEach(({ tag, attributes, options }) => {
     const field = document.createElement(tag);
+    const fieldContainer = document.createElement("div");
+    fieldContainer.className = "user-box";
     Object.entries(attributes).forEach(([a, v]) => {
       field.setAttribute(a, v);
-      form.appendChild(field);
+      fieldContainer.appendChild(field);
+      form.appendChild(fieldContainer);
     });
 
     tag === "select" &&
@@ -195,6 +199,7 @@ const renderHabitsForm = () => {
         field.appendChild(option);
       });
   });
+
   console.log(form);
   form.addEventListener("submit", createNewHabit);
   main.appendChild(form);
@@ -213,11 +218,17 @@ const login = (data) => {
   location.hash = "#home";
 };
 
+//!! HARRY
 
 const renderHabits = () => {
   main.innerHTML = `
-  <nav><a href="#new-habit">Add new habit</a></nav>
-  <h1> Welcome to your habits</h1>
+  <header><a href="#new-habit" class="logout-btn">Add new habit</a></header>
+  <h1>Your goals</h1>
+  <section>
+  <ul>
+  <li>Your habit</li>
+  </ul>
+  </section>
   `;
 };
 
@@ -239,7 +250,28 @@ const renderProfile = () => {
   `;
 };
 
+// const navBar = document.querySelector(".links");
+// const updateNav = () => {
+//   navBar.innerHTML = `
+//   <li><a href="#home" class="sign-up">Home</a></li>
+//   <li><a href="#profile" class="sign-up">Profile</a></li>
+//   <li><a href="#logout" class="logout">Logout</a></li>
+// `;
+
+const navBar = document.querySelector(".links");
+function updateNav() {
+  navBar.innerHTML = `
+  <li><a href="#home" class="sign-up">Home</a></li>
+  <li><a href="#profile" class="sign-up">Profile</a></li>
+  <li><a href="#logout" class="logout">Logout</a></li>
+  `;
+}
+
 const logout = () => {
   // localStorage.clear();
   location.hash = "#login";
-}
+  navBar.innerHTML = `
+  <li><a href="#login" class="login">Login</a></li>
+  <li><a href="#signup" class="sign-up">Sign Up</a></li>
+  `;
+};

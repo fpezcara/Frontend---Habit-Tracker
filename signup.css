@@ -218,4 +218,7 @@ header {
   }
 }
 
-
+.logout-btn{
+  text-decoration: none;
+  color: black;
+}

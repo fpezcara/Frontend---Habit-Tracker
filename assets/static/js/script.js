@@ -27,17 +27,7 @@ const updateHomepage = (hash) => {
   }
 };
 
-const navBar = document.querySelector(".links");
-const updateNav = () => {
-  navBar.innerHTML = `
-  <li><a href="#home" class="sign-up">Home</a></li>
-  <li><a href="#profile" class="sign-up">Profile</a></li>
-  <li><a href="#logout" class="logout">Logout</a></li>
-  `;
-};
-
 window.addEventListener("hashchange", () => {
   let hash = window.location.hash;
-  console.log(hash);
   updateHomepage(hash);
 });
