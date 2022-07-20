@@ -10,8 +10,15 @@ const updateHomepage = (hash) => {
     case "signup":
       renderRegistrationForm();
       break;
-    // case "habits":
-
+    case "home":
+      renderHabits();
+    break;
+    case "new-habit":
+      renderHabitsForm();
+    break;
+    case "profile":
+      renderProfile();
+    break;
     //   ;
     default:
       render404();
@@ -20,15 +27,12 @@ const updateHomepage = (hash) => {
 
 const navBar = document.querySelector(".links");
 const updateNav = () => {
-
   navBar.innerHTML = `
   <li><a href="#home" class="sign-up">Home</a></li>
   <li><a href="#profile" class="sign-up">Profile</a></li>
-  <li><a href="#logout">Logout</a></li>
+  <li><a href="#logout" class="logout">Logout</a></li>
   `;
 };
-
-console.log("nav", navBar);
 
 {
   /* <form id="addNewHabit">

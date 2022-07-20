@@ -209,13 +209,21 @@ const login = (data) => {
   // localStorage.setItem("email", payload.email);
   console.log(data);
   updateNav();
-  location.hash = "#habits";
+  location.hash = "#home";
 };
 
 // const logout = () => {
 //   localStorage.clear();
 //   location.hash = "#login";
 // }
+
+const renderHabits = () => {
+  main.innerHTML = `
+  <nav><a href="#new-habit">Add new habit</a></nav>
+  <h1> Welcome to your habits</h1>
+  `;
+
+};
 
 const currentUser = () => {
   const username = localStorage.getItem("username");
@@ -227,3 +235,11 @@ const render404 = () => {
   error.textContent = "Oops, we can't find that page sorry!";
   main.appendChild(error);
 };
+
+
+const renderProfile = () => {
+  main.innerHTML = `
+  <h2>Welcome to your profile!</h2>
+  <p>Profile information</p>
+  `
+}
