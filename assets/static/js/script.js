@@ -12,13 +12,13 @@ const updateHomepage = (hash) => {
       break;
     case "home":
       renderHabits();
-    break;
+      break;
     case "new-habit":
       renderHabitsForm();
-    break;
+      break;
     case "profile":
       renderProfile();
-    break;
+      break;
     //   ;
     default:
       render404();
@@ -60,5 +60,4 @@ window.addEventListener("hashchange", () => {
   let hash = window.location.hash.substring(1);
   console.log(hash);
   updateHomepage(hash);
-
 });

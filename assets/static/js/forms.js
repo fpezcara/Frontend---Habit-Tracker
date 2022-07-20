@@ -164,10 +164,6 @@ const renderHabitsForm = () => {
       },
     },
     {
-      tag: "input",
-      attributes: { type: "submit", value: "Add new habit", id: "submit" },
-    },
-    {
       tag: "select",
       attributes: { type: "checkbox", name: "frequency", id: "frequency" },
       options: [
@@ -176,6 +172,10 @@ const renderHabitsForm = () => {
         { value: "weekly" },
         { value: "monthly" },
       ],
+    },
+    {
+      tag: "input",
+      attributes: { type: "submit", value: "Add new habit", id: "submit" },
     },
   ];
 
@@ -195,8 +195,9 @@ const renderHabitsForm = () => {
         field.appendChild(option);
       });
   });
-
-  return form;
+  console.log(form);
+  form.addEventListener("submit", createNewHabit);
+  main.appendChild(form);
 };
 
 const login = (data) => {
@@ -222,7 +223,6 @@ const renderHabits = () => {
   <nav><a href="#new-habit">Add new habit</a></nav>
   <h1> Welcome to your habits</h1>
   `;
-
 };
 
 const currentUser = () => {
@@ -236,10 +236,9 @@ const render404 = () => {
   main.appendChild(error);
 };
 
-
 const renderProfile = () => {
   main.innerHTML = `
   <h2>Welcome to your profile!</h2>
   <p>Profile information</p>
-  `
-}
+  `;
+};
