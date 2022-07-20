@@ -92,6 +92,11 @@ header {
   font-size: 10px;
 }
 
+p {
+  color: white;
+  font-family: Orbitron, sans-serif;
+}
+
 .signup-box form input[type="submit"] {
   position: relative;
   display: inline-block;
