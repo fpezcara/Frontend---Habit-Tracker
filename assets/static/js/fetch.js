@@ -4,16 +4,17 @@ const requestLogin = async (e) => {
   try {
     const options = {
       method: "POST",
-      mode: "no-cors",
-      //   headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(Object.fromEntries(new FormData(e.target))),
     };
     const r = await fetch(
-      `http://optimizeprime-api.herokuapp.com/auth/login`,
+      `https://optimizeprime-api.herokuapp.com/auth/login`,
       options
     );
 
-      const data = await r.json();
+    console.log(r)
+
+    const data = await r.json();
 
     if (data.err) {
       throw Error(data.err);
@@ -35,7 +36,7 @@ const requestRegistration = async (e) => {
       body: JSON.stringify(Object.fromEntries(new FormData(e.target))),
     };
     const r = await fetch(
-      `https://optimizeprime-api.herokuapp.com/auth/login`,
+      `https://optimizeprime-api.herokuapp.com/auth/register`,
       options
     );
 
