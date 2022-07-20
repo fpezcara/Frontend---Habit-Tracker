@@ -111,3 +111,7 @@ header {
         opacity: 0;
     }
 }
+
+.noDisplay {
+    display: none;
+}
