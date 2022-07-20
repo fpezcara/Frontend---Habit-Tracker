@@ -1,11 +1,15 @@
 @import url(./style.css);
 
-html {
+html, main {
   height: 100vh;
   background: linear-gradient(#141e30, #243b55);
   animation: fadeIn 1s ease-out;
   animation-fill-mode: backwards;
   animation-direction: normal;
+}
+
+main{
+  height: 95vh;
 }
 
 header {
@@ -230,22 +234,39 @@ select {
   color: black;
 }
 
-.habit {
+.newHabitContainer {
   background: #03e9f4;
   box-shadow: #003a3d;
-  color: rgba(0, 0, 0, .6);
+  top: 60%;
 }
 
+.newHabitContainer input::placeholder {
+  color: #fff;
+}
 
-.habit .user-box select {
-  background: #fff;
-  color: rgba(0, 0, 0, .6);
-  padding: 5px 10px;
-  border-radius: 1em;
+.newHabitContainer .user-box:nth-child(3),
+.user-box:nth-child(4) {
+  width: 8.3em;
+  padding: 0.5em;
+  box-sizing: border-box;
+  overflow: hidden;
+
+}
+
+/* .newHabitContainer .user-box:nth-child(3)::placeholder, .user-box:nth-child(4)::placeholder{
+  width: 8em;
+  padding: 0.5em;
+  color: orange;
+
+} */
+
+.datePicker::-webkit-calendar-picker-indicator {
+  /* color: #fff; */
   cursor: pointer;
+  color: orange;
 }
 
-.habit .user-box:last-child {
+.newHabitContainer .user-box:last-child {
   width: 70%;
   border-radius: 1.1em;
 }
@@ -284,5 +305,4 @@ select {
   animation-fill-mode: backwards;
   animation-direction: normal;
   animation-delay: .25s
-
 }
