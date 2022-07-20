@@ -1,25 +1,27 @@
 const loginButton = document.querySelector(".login");
 
 const updateHomepage = (hash) => {
-  //?if user is logged in we show the "add new habit", if not signed in then straight to "sign in" form
   main.innerHTML = "";
   switch (hash) {
-    case "login":
+    case "#login":
+    case "#":
       renderLoginForm();
       break;
-    case "signup":
+    case "#signup":
       renderRegistrationForm();
       break;
-    case "home":
+    case "#home":
       renderHabits();
       break;
-    case "new-habit":
+    case "#new-habit":
       renderHabitsForm();
       break;
-    case "profile":
+    case "#profile":
       renderProfile();
       break;
-    //   ;
+    case "#logout":
+      logout();
+      break;
     default:
       render404();
   }
@@ -34,30 +36,8 @@ const updateNav = () => {
   `;
 };
 
-{
-  /* <form id="addNewHabit">
-<legend>Add Habit</legend>
-<label for="newHabit">Enter new habit:</label>
-<input
-  type="text"
-  name="newHabit"
-  id="newHabit"
-  placeholder="Please enter new habit"
-/>
-<label for="nOfRepetitions">Number of repetitions:</label>
-<input type="number" name="nOfRepetitions" id="nOfRepetitions" />
-<label for="frequency">Frequency: </label>
-<select type="checkbox" name="frequency" id="frequency">
-  <option value="">Select one</option>
-  <option value="daily">Daily</option>
-  <option value="weekly">Weekly</option>
-  <option value="monthly">Monthly</option>
-</select>
-<input type="submit" value="Add new habit" />
-</form> */
-}
 window.addEventListener("hashchange", () => {
-  let hash = window.location.hash.substring(1);
+  let hash = window.location.hash;
   console.log(hash);
   updateHomepage(hash);
 });

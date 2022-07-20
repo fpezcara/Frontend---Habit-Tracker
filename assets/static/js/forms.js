@@ -213,10 +213,6 @@ const login = (data) => {
   location.hash = "#home";
 };
 
-// const logout = () => {
-//   localStorage.clear();
-//   location.hash = "#login";
-// }
 
 const renderHabits = () => {
   main.innerHTML = `
@@ -242,3 +238,8 @@ const renderProfile = () => {
   <p>Profile information</p>
   `;
 };
+
+const logout = () => {
+  // localStorage.clear();
+  location.hash = "#login";
+}
