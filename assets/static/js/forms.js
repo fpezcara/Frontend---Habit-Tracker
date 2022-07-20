@@ -69,7 +69,11 @@ const renderRegistrationForm = () => {
   const fields = [
     {
       tag: "input",
-      attributes: { type: "email", name: "email", placeholder: "Enter your email" },
+      attributes: {
+        type: "email",
+        name: "email",
+        placeholder: "Enter your email",
+      },
     },
     {
       tag: "input",
@@ -90,7 +94,11 @@ const renderRegistrationForm = () => {
 
     {
       tag: "input",
-      attributes: { type: "password", name: "user_password", placeholder: "Password" },
+      attributes: {
+        type: "password",
+        name: "user_password",
+        placeholder: "Password",
+      },
     },
     // {
     //   tag: "input",
@@ -131,8 +139,6 @@ const renderRegistrationForm = () => {
     form.appendChild(fieldContainer);
   });
 
-  // aTag.onclick = handleClick;
-
   form.addEventListener("submit", requestRegistration);
   main.appendChild(formContainer);
 };
@@ -158,10 +164,6 @@ const renderHabitsForm = () => {
       },
     },
     {
-      tag: "input",
-      attributes: { type: "submit", value: "Add new habit", id: "submit" },
-    },
-    {
       tag: "select",
       attributes: { type: "checkbox", name: "frequency", id: "frequency" },
       options: [
@@ -170,6 +172,10 @@ const renderHabitsForm = () => {
         { value: "weekly" },
         { value: "monthly" },
       ],
+    },
+    {
+      tag: "input",
+      attributes: { type: "submit", value: "Add new habit", id: "submit" },
     },
   ];
 
@@ -189,6 +195,51 @@ const renderHabitsForm = () => {
         field.appendChild(option);
       });
   });
-
-  return form;
+  console.log(form);
+  form.addEventListener("submit", createNewHabit);
+  main.appendChild(form);
 };
+
+const login = (data) => {
+  // localStorage.setItem('username', data.user);
+  // const payload = jwt_decode(data.token);
+  // console.log(data);
+  // console.log(payload);
+  // localStorage.setItem("token", data.token);
+  // localStorage.setItem("username", payload.username);
+  // localStorage.setItem("email", payload.email);
+  console.log(data);
+  updateNav();
+  location.hash = "#home";
+};
+
+
+const renderHabits = () => {
+  main.innerHTML = `
+  <nav><a href="#new-habit">Add new habit</a></nav>
+  <h1> Welcome to your habits</h1>
+  `;
+};
+
+const currentUser = () => {
+  const username = localStorage.getItem("username");
+  return username;
+};
+
+const render404 = () => {
+  const error = document.createElement("h2");
+  error.textContent = "Oops, we can't find that page sorry!";
+  main.appendChild(error);
+};
+
+const renderProfile = () => {
+  main.innerHTML = `
+  <h2>Welcome to your profile!</h2>
+  <p>Profile information</p>
+  `;
+};
+
+const logout = () => {
+  // localStorage.clear();
+  location.hash = "#login";
+}
