@@ -12,7 +12,10 @@ const requestLogin = async (e) => {
     //   options
     // );
 
-    const r = await fetch(`http://localhost:3000/auth/login`, options);
+    const r = await fetch(
+      `https://optimizeprime-api.herokuapp.com/auth/login`,
+      options
+    );
 
     const data = await r.json();
 
@@ -37,7 +40,10 @@ const requestRegistration = async (e) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(Object.fromEntries(new FormData(e.target))),
     };
-    const r = await fetch(`http://localhost:3000/auth/register`, options);
+    const r = await fetch(
+      `https://optimizeprime-api.herokuapp.com/auth/register`,
+      options
+    );
 
     // console.log("rrrrr", r)
     const data = await r.json();
@@ -50,17 +56,6 @@ const requestRegistration = async (e) => {
   } catch (err) {
     console.warn(`Error: ${err}`);
   }
-};
-
-const requestAllHabits = async () => {
-  const options = {
-    headers: new Headers({ Authorization: localStorage.getItem("token") }),
-  };
-
-  const response = await fetch(`http://localhost:3000/habits`, options);
-
-  const habits = await response.json();
-  return habits;
 };
 
 const createNewHabit = async (e) => {
@@ -69,43 +64,56 @@ const createNewHabit = async (e) => {
   try {
     const options = {
       method: "POST",
-      headers: new Headers(
-        { authorization: localStorage.getItem("token"), "Content-Type": "application/json" }
-      ),
+      headers: new Headers({
+        authorization: localStorage.getItem("token"),
+        "Content-Type": "application/json",
+      }),
       body: JSON.stringify(Object.fromEntries(new FormData(e.target))),
     };
-    const r = await fetch(`http://localhosgit t:3000/habits/new-habit`, options);
-    // console.log("rrrrr", r)
+    const r = await fetch(
+      `https://optimizeprime-api.herokuapp.com/habits/new-habit`,
+      options
+    );
     const data = await r.json();
     if (data.err) {
       throw Error(data.err);
+    } else {
+      location.hash = "#home";
     }
-    console.log("response", r);
-    console.log("data", data);
   } catch (err) {
     console.warn(`Error: ${err}`);
   }
 };
 
-// e.preventDefault();
-// try {
-//     const options = {
-//         method: 'POST',
-//         headers: { "Content-Type": "application/json" },
-//         body: JSON.stringify(Object.fromEntries(new FormData(e.target)))
-//     }
+const requestAllHabits = async () => {
+  const options = {
+    headers: new Headers({ authorization: localStorage.getItem("token") }),
+  };
 
-//     const response = await fetch('http://localhost:3000/books', options);
-//     const { id, err } = await response.json();
-//     if(err) {
-//         throw Error(err)
-//     } else {
-//         window.location.hash = `#books/${id}`
-//     }
-// } catch (err) {
-//     console.warn(err);
-// }
+  const response = await fetch(
+    `https://optimizeprime-api.herokuapp.com/habits`,
+    options
+  );
 
+  const habits = await response.json();
+
+  return habits;
+};
+
+const getDaysOfHabits = async (user_habit_id) => {
+  const options = {
+    headers: new Headers({ authorization: localStorage.getItem("token") }),
+  };
+
+  const response = await fetch(
+    `https://optimizeprime-api.herokuapp.com/habits/days/${user_habit_id}`,
+    options
+  );
+
+  const habitsDays = await response.json();
+
+  return habitsDays;
+};
 const requestProfileInfo = async (e) => {
   e.preventDefault();
 };
