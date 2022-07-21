@@ -1,16 +1,11 @@
 const requestLogin = async (e) => {
   e.preventDefault();
-
   try {
     const options = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(Object.fromEntries(new FormData(e.target))),
     };
-    // const r = await fetch(
-    //   "https://optimizeprime-api.herokuapp.com/auth/login",
-    //   options
-    // );
 
     const r = await fetch(
       `https://optimizeprime-api.herokuapp.com/auth/login`,
@@ -114,6 +109,31 @@ const getDaysOfHabits = async (user_habit_id) => {
 
   return habitsDays;
 };
+
 const requestProfileInfo = async (e) => {
   e.preventDefault();
+};
+
+const completeForTheDay = async (completed, dailyHabitId, habitId) => {
+  console.log(completed, dailyHabitId, habitId);
+  try {
+    const options = {
+      method: "POST",
+      headers: new Headers({
+        authorization: localStorage.getItem("token"),
+        "Content-Type": "application/json",
+      }),
+      body: JSON.stringify(Object.fromEntries(new FormData(e.target))),
+    };
+    // const response = await fetch(
+    //   `https://optimizeprime-api.herokuapp.com/habits/setdat}`,
+    //   options
+    // );
+
+    const habitsDays = await response.json();
+  } catch (err) {
+    console.warn(`Error: ${err}`);
+  }
+
+  return habitsDays;
 };
