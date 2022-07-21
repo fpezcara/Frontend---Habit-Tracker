@@ -90,14 +90,6 @@ header {
   font-family: Orbitron, sans-serif;
 }
 
-/* .signup-box .user-box input:focus~label:not(input[type="submit"]):not(input[type="date"]),
-.signup-box .user-box input:valid~label:not(input[type="submit"]):not(input[type="date"]) {
-  top: -20px;
-  left: 0;
-  color: #03e9f4;
-  font-size: 10px;
-} */
-
 .signup-box .user-box input:not(input[type="submit"], input[type="date"]):focus~label,
 .signup-box .user-box input:not(input[type="submit"], input[type="date"]):valid~label {
   top: -20px;
@@ -252,10 +244,6 @@ p {
   box-shadow: #003a3d;
   top: 65%;
   width: 38%;
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; */
 }
 
 .newHabitContainer .newHabitUserBox {
@@ -274,7 +262,6 @@ p {
   box-sizing: border-box;
   font-size: 12px;
 
-  /* height: 400px; */
 }
 
 
@@ -288,9 +275,8 @@ p {
 }
 
 .datePicker::-webkit-calendar-picker-indicator {
-  /* color: #fff; */
   cursor: pointer;
-  color: orange;
+
 }
 
 
@@ -306,16 +292,13 @@ p {
 
 .new-habit-btn {
   position: absolute;
-  /* right: 10%; */
   top: 20%;
   left: 80%;
 
 }
 
 #new-habit {
-  color: black;
   position: absolute;
-  /* right: 10%; */
   top: 17%;
   left: 70%;
   text-transform: uppercase;
@@ -346,12 +329,6 @@ p {
   animation-delay: 1s;
   animation-fill-mode: backwards;
   animation-direction: normal;
-  /* position: absolute;
-  top: 55%;
-  left: 50%;
-  width: 400px;
-  padding: 40px; */
-  /* transform: translate(-30%, -30%); */
   background: rgba(0, 0, 0, 0.5);
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
@@ -374,4 +351,14 @@ p {
   text-align: center;
   line-height: 90px;
   font-family: Orbitron, sans-serif;
+}
+
+#singleHabitHeader {
+  color: #fff;
+  font-family: Orbitron, sans-serif;
+  padding: 2em;
+}
+
+#singleHabitHeader span {
+  color: #03e9f4;
 }

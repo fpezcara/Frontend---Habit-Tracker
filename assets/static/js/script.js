@@ -24,6 +24,9 @@ const updateHomepage = (hash) => {
     case "#profile":
       renderProfile();
       break;
+    case "#habit":
+      renderSingleHabit();
+      break;
     case "#logout":
       logout();
       break;

@@ -236,7 +236,7 @@ const renderHabits = async () => {
   const newHabitLink = document.createElement("a");
   newHabitLink.href = "#new-habit";
   newHabitLink.id = "new-habit";
-  newHabitLink.textContent = "new habit"
+  newHabitLink.textContent = "new habit";
   // <a href="#new-habit" id="new-habit">new habit</a>
   const habits = await requestAllHabits();
 
@@ -262,9 +262,14 @@ const renderHabits = async () => {
     habitQuantityTitle.textContent = "How's today looking? ";
     const habitQuantityContent = document.createElement("p");
     habitQuantityContent.textContent = habitData.quantity;
-    const habitBtn = document.createElement("button")
-    habitBtn.textContent = "Check your Days"
-    habitBtn.className.id = habitData.user_habit_id
+    const habitBtn = document.createElement("a");
+    habitBtn.textContent = "Check your Days";
+    habitBtn.href = "#habit";
+    habitBtn.id = habitData.user_habit_id;
+
+    habitBtn.addEventListener("click", (e) => {
+      localStorage.setItem("habit_id", habitData.user_habit_id);
+    });
 
     habitContainer.append(
       habitName,
@@ -305,7 +310,55 @@ const renderHabits = async () => {
 
 };
 
+const renderSingleHabit = async () => {
+  const habit = localStorage.getItem("habit_id");
+  const daysOfHabits = await getDaysOfHabits(habit);
+  const header = document.createElement("div");
+  header.id = "singleHabitHeader";
+  const h2 = document.createElement("h2");
+  h2.textContent = `Hello, ${daysOfHabits[0]}`;
+  const habitProgress = document.createElement("p");
+  habitProgress.textContent = "Check your habit progress:";
+  const habitName = document.createElement("span");
+  habitName.textContent = `Habit: ${daysOfHabits[0].habit_name}`;
 
+  console.log(h2);
+  header.append(h2, habitProgress, habitName);
+  const table = document.createElement("table");
+  const tr = document.createElement("tr");
+  const thOne = document.createElement("th");
+  // const thContent = [""]
+  //  <div>
+  //  <h2>Hi, Allan</h2> firstname
+  //  <h3>Check your habit progress</h3>
+  //<h4>Habit: Mantra</h4> daysOfHabit.habit_name
+  //  </div>
+  // <table>
+  //   <tr>
+  //     <th>Day</th>
+  //     <th>Contact</th>
+  //     <th>Country</th>
+  //   </tr>
+  //   <tr>
+  //     <td>Alfreds Futterkiste</td>
+  //     <td>Maria Anders</td>
+  //     <td>Germany</td>
+  //   </tr>
+  //   <tr>
+  //     <td>Centro comercial Moctezuma</td>
+  //     <td>Francisco Chang</td>
+  //     <td>Mexico</td>
+  //   </tr>
+  // </table>;
+  console.log(table);
+  daysOfHabits.forEach((d) => {});
+  console.log(daysOfHabits);
+
+  //!!remember to build what happens if there's nothing to display so !daysOfHabits.length
+
+  console.log(localStorage.getItem("habit_id"));
+  main.append(header, table);
+};
 
 const render404 = () => {
   const error = document.createElement("h2");
@@ -330,11 +383,11 @@ function updateNav() {
 }
 
 const login = (data) => {
+  // localStorage.setItem('email', email);
 
-  console.log("Console log from /forms/login - LOGIN", data.token);
+  const payload = jwt_decode(data.token);
 
-  localStorage.setItem('token', data.token);
-
+  localStorage.setItem("token", data.token);
   updateNav();
   location.hash = "#home";
 };
