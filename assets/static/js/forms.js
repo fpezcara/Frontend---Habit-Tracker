@@ -264,6 +264,7 @@ const renderHabits = async () => {
     habitQuantityContent.textContent = habitData.quantity;
     const habitBtn = document.createElement("button")
     habitBtn.textContent = "Check your Days"
+    habitBtn.classList = "check-days"
     habitBtn.className.id = habitData.user_habit_id
 
     habitContainer.append(
