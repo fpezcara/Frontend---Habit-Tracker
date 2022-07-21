@@ -347,8 +347,7 @@ const renderSingleHabit = async () => {
 
     checkbox.addEventListener("change", (e) => {
       console.log(e.target.checked);
-      e.target.checked &&
-        completeForTheDay(e.target.checked, d.daily_habit_id, habit);
+      e.target.checked && completeForTheDay(habit, d.daily_habit_id);
       // completeForTheDay()
     });
   });

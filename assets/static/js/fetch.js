@@ -114,9 +114,9 @@ const requestProfileInfo = async (e) => {
   e.preventDefault();
 };
 
-const completeForTheDay = async ( dailyHabitId, habitId) => {
-  const isCompleted = 1;
-  const obj = { isCompleted, dailyHabitId, habitId };
+const completeForTheDay = async (user_habit_id, daily_habit_id) => {
+  const completed = 1;
+  const obj = { completed, user_habit_id, daily_habit_id };
   // console.log(Object.fromEntries({}));
   console.log(obj);
   try {
