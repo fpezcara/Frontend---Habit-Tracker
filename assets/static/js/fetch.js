@@ -54,15 +54,19 @@ const requestRegistration = async (e) => {
 };
 
 const requestAllHabits = async () => {
-  const habits = await fetch(`https://optimizeprime-api.herokuapp.com/habits`);
+  const options = { headers: new Headers({ Authorization: localStorage.getItem("token") }) };
 
-  const response = response.json();
-  console.log("HABTIS", response);
+  const response = await fetch(`https://optimizeprime-api.herokuapp.com/habits`, options);
+
+  const habits = await response.json();
+
+  return habits;
+
 };
 
 const createNewHabit = async (e) => {
   e.preventDefault();
-  console.log("helllooo", Object.fromEntries(new FormData(e.target)));
+  console.log(Object.fromEntries(new FormData(e.target)));
   try {
     const options = {
       method: "POST",
@@ -77,12 +81,12 @@ const createNewHabit = async (e) => {
     );
     // console.log("rrrrr", r)
     const data = await r.json();
-
     if (data.err) {
       throw Error(data.err);
+    } else {
+      location.hash = "#home";
     }
-    console.log("response", r);
-    console.log("data", data);
+ 
   } catch (err) {
     console.warn(`Error: ${err}`);
   }

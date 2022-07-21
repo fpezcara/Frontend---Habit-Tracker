@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
-html, body {
+html,
+body {
     height: 100%;
     background-color: #f6f6f9;
     animation: fadeIn 1s ease-out;
@@ -123,4 +124,9 @@ header {
 
 .noDisplay {
     display: none;
+}
+
+
+#allHabitsRenders {
+    background: red;
 }

@@ -1,10 +1,15 @@
 const loginButton = document.querySelector(".login");
+const signup = document.querySelector(".sign-up");
+
+const token = localStorage.getItem("token")
 
 const updateHomepage = (hash) => {
   main.innerHTML = "";
+  
   switch (hash) {
     case "#login":
-    case "#":
+      renderLoginForm();
+    case "":
       renderLoginForm();
       break;
     case "#signup":
@@ -31,3 +36,9 @@ window.addEventListener("hashchange", () => {
   let hash = window.location.hash;
   updateHomepage(hash);
 });
+
+if (token) {
+  signup.style.display = 'none';
+  loginButton.style.display = 'none';
+}
+
