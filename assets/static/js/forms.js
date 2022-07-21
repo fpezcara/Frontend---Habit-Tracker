@@ -384,8 +384,7 @@ function updateNav() {
   navBar.innerHTML = `
   <li><a href="#home" class="sign-up">Home</a></li>
   <li><a href="#profile" class="sign-up">Profile</a></li>
-  <li><a href="#logout" class="logout">Logout</a></li>
-  `;
+  <li><a href="#logout" class="logout" style="color: rgb(128, 121, 191); font-size: 15px; transition: all 0.35s linear 0s; font-family: Orbitron, sans-serif;">Logout</a></li>`;
 }
 
 const login = (data) => {
