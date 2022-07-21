@@ -243,6 +243,7 @@ const renderHabits = async () => {
   const showAllHabits = (habitData) => {
     const habitContainer = document.createElement("div");
     habitContainer.className = "habit-box";
+    habitContainer.id = habitData.user_habit_id
     const habitName = document.createElement("h3");
     habitName.textContent = habitData.habit_name;
     const habitGoalTitle = document.createElement("p");
@@ -261,6 +262,9 @@ const renderHabits = async () => {
     habitQuantityTitle.textContent = "How's today looking? ";
     const habitQuantityContent = document.createElement("p");
     habitQuantityContent.textContent = habitData.quantity;
+    const habitBtn = document.createElement("button")
+    habitBtn.textContent = "Check your Days"
+    habitBtn.className.id = habitData.user_habit_id
 
     habitContainer.append(
       habitName,
@@ -271,16 +275,37 @@ const renderHabits = async () => {
       habitEndDateTitle,
       habitEndDateContent,
       habitQuantityTitle,
-      habitQuantityContent
+      habitQuantityContent,
+      habitBtn
     );
+
     habitRenderedContainer.appendChild(habitContainer);
+
   };
 
   habits.forEach(showAllHabits);
   main.append(h2, newHabitLink, habitRenderedContainer);
 
-  // main.innerHTML = renderPosts;
+  const btns = document.querySelectorAll('.habit-box')
+
+  btns.forEach((element) => {
+    element.addEventListener('click', async (e) => {
+
+      const user_habit_id = e.composedPath()[1].id
+
+      const days_habits_data = await getDaysOfHabits(user_habit_id)
+
+      console.log(days_habits_data)
+      
+      
+
+    })
+  })
+
+
 };
+
+
 
 const render404 = () => {
   const error = document.createElement("h2");

@@ -54,7 +54,7 @@ const requestRegistration = async (e) => {
 };
 
 const requestAllHabits = async () => {
-  const options = { headers: new Headers({ Authorization: localStorage.getItem("token") }) };
+  const options = { headers: new Headers({ authorization: localStorage.getItem("token") }) };
 
   const response = await fetch(`https://optimizeprime-api.herokuapp.com/habits`, options);
 
@@ -63,6 +63,18 @@ const requestAllHabits = async () => {
   return habits;
 
 };
+
+const getDaysOfHabits = async (user_habit_id) => {
+
+  const options = { headers: new Headers({ authorization: localStorage.getItem("token") }) };
+
+  const response = await fetch(`https://optimizeprime-api.herokuapp.com/habits/days/${user_habit_id}`, options);
+
+  const habitsDays = await response.json();
+
+  return habitsDays;
+
+}
 
 const createNewHabit = async (e) => {
   e.preventDefault();
@@ -86,7 +98,7 @@ const createNewHabit = async (e) => {
     } else {
       location.hash = "#home";
     }
- 
+
   } catch (err) {
     console.warn(`Error: ${err}`);
   }
