@@ -336,6 +336,16 @@ p {
   animation-delay: .25s
 }
 
+#new-habit:hover {
+  background: #03e9f4;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #03e9f4,
+    0 0 25px #03e9f4,
+    0 0 50px #03e9f4,
+    0 0 100px #03e9f4;
+}
+
 .habit-goal {
   color: #fff;
 
@@ -358,6 +368,7 @@ p {
   border-radius: 10px;
   width: 25%;
   text-align: center;
+  padding-bottom: 30px;
 }
 
 #habitRenderedContainer {
@@ -378,6 +389,7 @@ p {
 }
 
 .check-days {
+  border: 2px solid rgb(128, 121, 191);
   font-size: 12px;
   text-transform: uppercase;
   padding: .7em 0.5em;
@@ -385,7 +397,7 @@ p {
   border-radius: 1em;
   width: 11em;
   text-align: center;
-  background: #03e9f4;
+  background: transparent;
   box-shadow: #003a3d;
   font-family: Orbitron, sans-serif;
   font-weight: 500;
@@ -395,6 +407,17 @@ p {
   animation-fill-mode: backwards;
   animation-direction: normal;
   animation-delay: .25s
+}
+
+.check-days:hover {
+  border: 2px solid #03e9f4;
+  background: #03e9f4;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #03e9f4,
+    0 0 25px #03e9f4,
+    0 0 50px #03e9f4,
+    0 0 100px #03e9f4;
 }
 
 h2 {
