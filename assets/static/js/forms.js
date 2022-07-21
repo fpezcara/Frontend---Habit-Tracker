@@ -214,26 +214,10 @@ const renderHabitsForm = () => {
     });
 
     label && fieldContainer.appendChild(labelTag);
-    console.log(fieldContainer);
   });
 
   form.addEventListener("submit", createNewHabit);
   main.appendChild(formContainer);
-
-  console.log(main);
-};
-
-const login = (data) => {
-  // localStorage.setItem('username', data.user);
-  // const payload = jwt_decode(data.token);
-  // console.log(data);
-  // console.log(payload);
-  // localStorage.setItem("token", data.token);
-  // localStorage.setItem("username", payload.username);
-  // localStorage.setItem("email", payload.email);
-  console.log(data);
-  updateNav();
-  location.hash = "#home";
 };
 
 const renderHabits = () => {
@@ -259,11 +243,6 @@ const renderHabits = () => {
   `;
 };
 
-const currentUser = () => {
-  const username = localStorage.getItem("username");
-  return username;
-};
-
 const render404 = () => {
   const error = document.createElement("h2");
   error.textContent = "Oops, we can't find that page sorry!";
@@ -286,6 +265,20 @@ function updateNav() {
   `;
 }
 
+const login = (data) => {
+  console.log("adaaaa", data);
+  // localStorage.setItem('username', data.user);
+  // const payload = jwt_decode(data.token);
+  // console.log(data);
+  // console.log(payload);
+  // localStorage.setItem("token", data.token);
+  // localStorage.setItem("username", payload.username);
+  // localStorage.setItem("email", payload.email);
+  console.log(data);
+  updateNav();
+  location.hash = "#home";
+};
+
 const logout = () => {
   // localStorage.clear();
   location.hash = "#login";
@@ -293,4 +286,9 @@ const logout = () => {
   <li><a href="#login" class="login">Login</a></li>
   <li><a href="#signup" class="sign-up">Sign Up</a></li>
   `;
+};
+
+const currentUser = () => {
+  // const username = localStorage.getItem("username");
+  //return username;
 };
