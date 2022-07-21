@@ -13,4 +13,14 @@ describe('index.html', () => {
         let nav = document.querySelector('nav');
         expect(nav).toBeTruthy();
     })
+
+    test('it has a header title', () => {
+        let nav = document.querySelector('nav');
+        expect(nav).toBeTruthy();
+    })
+
+    test('it has a header title', () => {
+        let nav = document.querySelector('nav');
+        expect(nav).toBeTruthy();
+    })
 })

@@ -148,9 +148,8 @@ const renderHabitsForm = () => {
       tag: "input",
       attributes: {
         type: "text",
-        name: "newHabit",
-        placeholder: "Enter new habit",
-        id: "newHabit",
+        name: "habit_name",
+        placeholder: "Enter your habit name",
       },
     },
     // { tag: "label", for: "newHabit" },
@@ -158,9 +157,24 @@ const renderHabitsForm = () => {
       tag: "input",
       attributes: {
         type: "number",
-        name: "nOfRepetitions",
-        placeholder: "Enter number of repetitions",
-        id: "nOfRepetitions",
+        name: "goal",
+        placeholder: "Enter your goal",
+      },
+    },
+    {
+      tag: "input",
+      attributes: {
+        type: "number",
+        name: "quantity",
+        placeholder: "Enter quantity",
+      },
+    },
+    {
+      tag: "input",
+      attributes: {
+        type: "number",
+        name: "frequency",
+        placeholder: "Enter frequency",
       },
     },
     {
@@ -200,7 +214,7 @@ const renderHabitsForm = () => {
     const fieldContainer = document.createElement("div");
     const labelTag = document.createElement("label");
 
-    fieldContainer.className = "user-box";
+    fieldContainer.className = "user-box newHabitUserBox";
     Object.entries(attributes).forEach(([a, v]) => {
       field.setAttribute(a, v);
       fieldContainer.appendChild(field);
@@ -221,6 +235,8 @@ const renderHabitsForm = () => {
 };
 
 const renderHabits = () => {
+  // const habits = requestAllHabits();
+
   main.innerHTML = `
   <div class="signup-box habits">
     <h2>Your Goals!</h2>
@@ -266,15 +282,14 @@ function updateNav() {
 }
 
 const login = (data) => {
-  console.log("Console log from /forms/login - LOGIN", data);
-  // localStorage.setItem('username', data.user);
+  console.log("Console log from /forms/login - LOGIN", data.token);
+  localStorage.setItem('token', data.token);
   // const payload = jwt_decode(data.token);
   // console.log(data);
   // console.log(payload);
   // localStorage.setItem("token", data.token);
   // localStorage.setItem("username", payload.username);
   // localStorage.setItem("email", payload.email);
-  console.log(data);
   updateNav();
   location.hash = "#home";
 };
