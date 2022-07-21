@@ -12,10 +12,7 @@ const requestLogin = async (e) => {
     //   options
     // );
 
-    const r = await fetch(
-      `http://localhost:3000/habits/new-habit`,
-      options
-    );
+    const r = await fetch(`http://localhost:3000/auth/login`, options);
 
     const data = await r.json();
 
@@ -24,7 +21,6 @@ const requestLogin = async (e) => {
       throw Error(data.err);
     }
 
-    console.log(data);
     login(data);
   } catch (err) {
     console.warn(`Error: ${err}`);
@@ -57,32 +53,30 @@ const requestRegistration = async (e) => {
 };
 
 const requestAllHabits = async () => {
-  const habits = await fetch(`https://optimizeprime-api.herokuapp.com/habits`);
+  const options = {
+    headers: new Headers({ Authorization: localStorage.getItem("token") }),
+  };
 
-  const response = response.json();
-  console.log("HABTIS", response);
+  const response = await fetch(`http://localhost:3000/habits`, options);
+
+  const habits = await response.json();
+  return habits;
 };
 
 const createNewHabit = async (e) => {
   e.preventDefault();
-  console.log("helllooo", Object.fromEntries(new FormData(e.target)));
+  console.log(Object.fromEntries(new FormData(e.target)));
   try {
     const options = {
       method: "POST",
-      headers: new Headers({ authorization: localStorage.getItem("token") }),
+      headers: new Headers(
+        { authorization: localStorage.getItem("token"), "Content-Type": "application/json" }
+      ),
       body: JSON.stringify(Object.fromEntries(new FormData(e.target))),
     };
-    // const r = await fetch(
-    //   `https://optimizeprime-api.herokuapp.com/habits/new-habit`,
-    //   options
-    // );
-    const r = await fetch(
-      `http://localhost:3000/habits/new-habit`,
-      options
-    );
+    const r = await fetch(`http://localhosgit t:3000/habits/new-habit`, options);
     // console.log("rrrrr", r)
     const data = await r.json();
-
     if (data.err) {
       throw Error(data.err);
     }
