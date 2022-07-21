@@ -266,7 +266,7 @@ function updateNav() {
 }
 
 const login = (data) => {
-  console.log("adaaaa", data);
+  console.log("Console log from /forms/login - LOGIN", data);
   // localStorage.setItem('username', data.user);
   // const payload = jwt_decode(data.token);
   // console.log(data);
@@ -280,7 +280,6 @@ const login = (data) => {
 };
 
 const logout = () => {
-  // localStorage.clear();
   location.hash = "#login";
   navBar.innerHTML = `
   <li><a href="#login" class="login">Login</a></li>
