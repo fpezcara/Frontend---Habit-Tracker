@@ -251,14 +251,24 @@ p {
   background: #03e9f4;
   box-shadow: #003a3d;
   top: 65%;
+  width: 50%;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
+}
+
+.newHabitContainer .newHabitUserBox{
+  width: 80%;
+  /* margin: 0 auto; */
 }
 
 .newHabitContainer input::placeholder {
   color: #fff;
 }
 
-.newHabitContainer .user-box:nth-child(3),
-.newHabitContainer .user-box:nth-child(4) {
+.newHabitContainer .user-box:nth-child(5),
+.newHabitContainer .user-box:nth-child(6) {
   width: 15em;
   padding: 0.5em;
   box-sizing: border-box;
@@ -267,16 +277,7 @@ p {
   /* height: 400px; */
 }
 
-.newHabitContainer .user-box:nth-child(3) label,
-.newHabitContainer .user-box:nth-child(4) label {
-  /* background-color: #003a3d; */
-  /* top: -20px; */
 
-  /* display: inline-block; */
-
-  /* background: red; */
-  /* height: 400px; */
-}
 
 .signup-box .user-box input[type="date"]:focus~label,
 .signup-box .user-box input[type="date"]:valid~label {
