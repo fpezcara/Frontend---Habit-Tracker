@@ -8,7 +8,7 @@ const requestLogin = async (e) => {
       body: JSON.stringify(Object.fromEntries(new FormData(e.target))),
     };
     const r = await fetch(
-      "https://optimizeprime-api.herokuapp.com/auth/login",
+      "http://localhost:3000/auth/login",
       options
     );
 
@@ -36,7 +36,7 @@ const requestRegistration = async (e) => {
       body: JSON.stringify(Object.fromEntries(new FormData(e.target))),
     };
     const r = await fetch(
-      `https://optimizeprime-api.herokuapp.com/auth/register`,
+      `http://localhost:3000/auth/register`,
       options
     );
 
@@ -52,7 +52,7 @@ const requestRegistration = async (e) => {
 };
 
 const requestAllHabits = async () => {
-  const habits = await fetch(`https://optimizeprime-api.herokuapp.com/habits`);
+  const habits = await fetch(`http://localhost:3000/habits`);
 
   const response = response.json();
   console.log("HABTIS", response);
@@ -64,7 +64,9 @@ const createNewHabit = async (e) => {
   try {
     const options = {
       method: "POST",
-      headers: { "authorization": localStorage.getItem("token") },
+      headers: new Headers(
+        { authorization: localStorage.getItem("token"), "Content-Type": "application/json" }
+      ),
       body: JSON.stringify(Object.fromEntries(new FormData(e.target))),
     };
     const r = await fetch(`http://localhost:3000/habits/new-habit`, options);
