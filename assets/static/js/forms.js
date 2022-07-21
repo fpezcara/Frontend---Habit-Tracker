@@ -299,23 +299,25 @@ const renderHabits = async () => {
 };
 
 const renderSingleHabit = async () => {
+
   const habit = localStorage.getItem("habit_id");
+
   const daysOfHabits = await getDaysOfHabits(habit);
+
   const header = document.createElement("div");
   header.id = "singleHabitHeader";
+
   const h2 = document.createElement("h2");
-  h2.textContent = daysOfHabits[0]
-    ? `Hello, ${daysOfHabits[0].firstname}`
-    : "Hello";
+  h2.textContent = daysOfHabits[0] ? `Hello, ${daysOfHabits[0].firstname}` : "Hello";
+
   const habitProgress = document.createElement("p");
   habitProgress.textContent = "Check your habit progress:";
-  const habitName = document.createElement("span");
-  habitName.textContent = daysOfHabits[0]
-    ? `Habit: ${daysOfHabits[0].habit_name}`
-    : "";
 
-  console.log(h2);
+  const habitName = document.createElement("span");
+  habitName.textContent = daysOfHabits[0] ? `Habit: ${daysOfHabits[0].habit_name}` : "";
+
   header.append(h2, habitProgress, habitName);
+
   const table = document.createElement("table");
   const tableHeader = document.createElement("thead");
   const trTH = document.createElement("tr");
@@ -326,64 +328,40 @@ const renderSingleHabit = async () => {
     th.textContent = cont;
     trTH.appendChild(th);
   });
+
   tableHeader.appendChild(trTH);
+
   const tableBody = document.createElement("tbody");
   let trTB;
+
   daysOfHabits.forEach((d) => {
+
     trTB = document.createElement("tr");
 
     const tdOne = document.createElement("td");
     tdOne.textContent = d.goal;
+
     const tdTwo = document.createElement("td");
     tdTwo.textContent = d.daily_habit_id;
+
     const tdThree = document.createElement("td");
+
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.id = "checkbox";
-    checkbox.checked = d.isCompleted ? true : false;
+    // checkbox.checked = d.isCompleted === 1 ? checkbox.checked : !checkbox.checked;
     tdThree.appendChild(checkbox);
     trTB.append(tdOne, tdTwo, tdThree);
     tableBody.appendChild(trTB);
 
     checkbox.addEventListener("change", (e) => {
-      const isCompleted = d.completed ? 1 : 0;
-      console.log(isCompleted);
-      completeForTheDay(isCompleted);
+      console.log(e.target.checked);
+      e.target.checked && completeForTheDay(habit, d.daily_habit_id);
       // completeForTheDay()
     });
   });
 
-  //  <div>
-  //  <h2>Hi, Allan</h2> firstname
-  //  <h3>Check your habit progress</h3>
-  //<h4>Habit: Mantra</h4> daysOfHabit.habit_name
-  //  </div>
-  // <table>
-  //   <tr>
-  //     <th>Goal</th>
-  //     <th>Day Number</th>
-  //     <th>Completed</th>
-  //   </tr>
-  //   <tr>
-  //     <td>Alfreds Futterkiste</td>
-  //     <td>Maria Anders</td>
-  //     <td>Germany</td>
-  //   </tr>
-  //   <tr>
-  //     <td>Centro comercial Moctezuma</td>
-  //     <td>Francisco Chang</td>
-  //     <td>Mexico</td>
-  //   </tr>
-  // </table>;
   table.append(tableHeader, tableBody);
-  console.log(table);
-
-  console.log(daysOfHabits);
-
-  //!!remember to build what happens if there's nothing to display so !daysOfHabits.length
-
-  console.log(localStorage.getItem("habit_id"));
-  console.log(header);
   main.append(header, table);
 };
 
