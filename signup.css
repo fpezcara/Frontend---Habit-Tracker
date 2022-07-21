@@ -251,14 +251,24 @@ p {
   background: #03e9f4;
   box-shadow: #003a3d;
   top: 65%;
+  width: 38%;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
+}
+
+.newHabitContainer .newHabitUserBox {
+  width: 80%;
+  /* margin: 0 auto; */
 }
 
 .newHabitContainer input::placeholder {
   color: #fff;
 }
 
-.newHabitContainer .user-box:nth-child(3),
-.newHabitContainer .user-box:nth-child(4) {
+.newHabitContainer .user-box:nth-child(5),
+.newHabitContainer .user-box:nth-child(6) {
   width: 15em;
   padding: 0.5em;
   box-sizing: border-box;
@@ -267,16 +277,7 @@ p {
   /* height: 400px; */
 }
 
-.newHabitContainer .user-box:nth-child(3) label,
-.newHabitContainer .user-box:nth-child(4) label {
-  /* background-color: #003a3d; */
-  /* top: -20px; */
 
-  /* display: inline-block; */
-
-  /* background: red; */
-  /* height: 400px; */
-}
 
 .signup-box .user-box input[type="date"]:focus~label,
 .signup-box .user-box input[type="date"]:valid~label {
@@ -315,10 +316,10 @@ p {
   color: black;
   position: absolute;
   /* right: 10%; */
-  top: 20%;
-  left: 80%;
+  top: 17%;
+  left: 70%;
   text-transform: uppercase;
-  padding: 1em 0.5em;
+  padding: .7em 0.5em;
   text-decoration: none;
   border-radius: 1em;
   width: 8em;
@@ -333,4 +334,44 @@ p {
   animation-fill-mode: backwards;
   animation-direction: normal;
   animation-delay: .25s
+}
+
+.habit-goal {
+  color: #fff;
+
+}
+
+.habit-box {
+  animation: fadeIn 0.5s ease-out;
+  animation-delay: 1s;
+  animation-fill-mode: backwards;
+  animation-direction: normal;
+  /* position: absolute;
+  top: 55%;
+  left: 50%;
+  width: 400px;
+  padding: 40px; */
+  /* transform: translate(-30%, -30%); */
+  background: rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+  border-radius: 10px;
+  width: 20%;
+  text-align: center;
+}
+
+#habitRenderedContainer {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 4em;
+}
+
+#habitRenderedContainer h3,
+#renderHabitsh2 {
+  color: #fff;
+  text-align: center;
+  line-height: 90px;
+  font-family: Orbitron, sans-serif;
 }

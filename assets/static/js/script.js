@@ -4,7 +4,7 @@ const updateHomepage = (hash) => {
   main.innerHTML = "";
   switch (hash) {
     case "#login":
-    case "#":
+    case "":
       renderLoginForm();
       break;
     case "#signup":

@@ -148,9 +148,8 @@ const renderHabitsForm = () => {
       tag: "input",
       attributes: {
         type: "text",
-        name: "newHabit",
-        placeholder: "Enter new habit",
-        id: "newHabit",
+        name: "habit_name",
+        placeholder: "Enter your habit name",
       },
     },
     // { tag: "label", for: "newHabit" },
@@ -158,9 +157,24 @@ const renderHabitsForm = () => {
       tag: "input",
       attributes: {
         type: "number",
-        name: "nOfRepetitions",
-        placeholder: "Enter number of repetitions",
-        id: "nOfRepetitions",
+        name: "goal",
+        placeholder: "Enter your goal",
+      },
+    },
+    {
+      tag: "input",
+      attributes: {
+        type: "number",
+        name: "quantity",
+        placeholder: "Enter quantity",
+      },
+    },
+    {
+      tag: "input",
+      attributes: {
+        type: "number",
+        name: "frequency",
+        placeholder: "Enter frequency",
       },
     },
     {
@@ -168,7 +182,7 @@ const renderHabitsForm = () => {
       attributes: {
         type: "date",
         id: "initialDate",
-        name: "end_date",
+        name: "initial_date",
         class: "datePicker",
       },
       label: { text: "Start Date", for: "initialDate" },
@@ -200,7 +214,7 @@ const renderHabitsForm = () => {
     const fieldContainer = document.createElement("div");
     const labelTag = document.createElement("label");
 
-    fieldContainer.className = "user-box";
+    fieldContainer.className = "user-box newHabitUserBox";
     Object.entries(attributes).forEach(([a, v]) => {
       field.setAttribute(a, v);
       fieldContainer.appendChild(field);
@@ -220,27 +234,59 @@ const renderHabitsForm = () => {
   main.appendChild(formContainer);
 };
 
-const renderHabits = () => {
-  main.innerHTML = `
-  <div class="signup-box habits">
-    <h2>Your Goals!</h2>
+const renderHabits = async () => {
+  const habitRenderedContainer = document.createElement("section");
+  habitRenderedContainer.id = "habitRenderedContainer";
+  const h2 = document.createElement("h2");
+  h2.textContent = "Your goals!";
+  h2.id = "renderHabitsh2";
+  const newHabitLink = document.createElement("a");
+  newHabitLink.href = "#new-habit";
+  newHabitLink.id = "new-habit";
+  newHabitLink.textContent = "new habit"
+  // <a href="#new-habit" id="new-habit">new habit</a>
+  const habits = await requestAllHabits();
 
-        <p>Habit:</p>
-        <p class="habit-name">Water Intake</p><br>
+  const showAllHabits = (habitData) => {
+    const habitContainer = document.createElement("div");
+    habitContainer.className = "habit-box";
+    const habitName = document.createElement("h3");
+    habitName.textContent = habitData.habit_name;
+    const habitGoalTitle = document.createElement("p");
+    habitGoalTitle.textContent = "Goal: ";
+    const habitGoalContent = document.createElement("p");
+    habitGoalContent.textContent = habitData.goal;
+    const habitStartDateTitle = document.createElement("p");
+    habitStartDateTitle.textContent = "When does it start?";
+    const habitStartDateContent = document.createElement("p");
+    habitStartDateContent.textContent = habitData.initial_date;
+    const habitEndDateTitle = document.createElement("p");
+    habitEndDateTitle.textContent = "When does it end?";
+    const habitEndDateContent = document.createElement("p");
+    habitEndDateContent.textContent = habitData.end_date;
+    const habitQuantityTitle = document.createElement("p");
+    habitQuantityTitle.textContent = "How's today looking? ";
+    const habitQuantityContent = document.createElement("p");
+    habitQuantityContent.textContent = habitData.quantity;
 
-        <p>Goal:</p>
-        <p class="habit-goal">5 Cups Per Day</p><br>
+    habitContainer.append(
+      habitName,
+      habitGoalTitle,
+      habitGoalContent,
+      habitStartDateTitle,
+      habitStartDateContent,
+      habitEndDateTitle,
+      habitEndDateContent,
+      habitQuantityTitle,
+      habitQuantityContent
+    );
+    habitRenderedContainer.appendChild(habitContainer);
+  };
 
-        <p>How Long For:</p>
-        <p class="habit-duration">A Week</p><br>
+  habits.forEach(showAllHabits);
+  main.append(h2, newHabitLink, habitRenderedContainer);
 
-        <p>How's Today Looking?</p>
-        <p class="habit-amount">3 Cups</p>
-   </div>
- 
-   <a href="#new-habit" id="new-habit">new habit</a>
-  
-  `;
+  // main.innerHTML = renderPosts;
 };
 
 const render404 = () => {
@@ -266,15 +312,16 @@ function updateNav() {
 }
 
 const login = (data) => {
-  console.log("adaaaa", data);
-  // localStorage.setItem('username', data.user);
-  // const payload = jwt_decode(data.token);
-  // console.log(data);
+  console.log("token", data);
+  // localStorage.setItem('email', email);
+
+  const payload = jwt_decode(data.token);
+  console.log(payload);
   // console.log(payload);
-  // localStorage.setItem("token", data.token);
+  localStorage.setItem("token", data.token);
   // localStorage.setItem("username", payload.username);
   // localStorage.setItem("email", payload.email);
-  console.log(data);
+  console.log(localStorage.getItem("token"));
   updateNav();
   location.hash = "#home";
 };
