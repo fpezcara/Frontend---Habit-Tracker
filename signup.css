@@ -1,38 +1,43 @@
 @import url(./style.css);
 
-html {
-    height: 100vh;
-    background: linear-gradient(#141e30, #243b55);
-    animation: fadeIn 1s ease-out;
-    animation-fill-mode: backwards;
-    animation-direction: normal;
+html,
+main {
+  height: 100vh;
+  background: linear-gradient(#141e30, #243b55);
+  animation: fadeIn 1s ease-out;
+  animation-fill-mode: backwards;
+  animation-direction: normal;
+}
+
+main {
+  height: 100%;
 }
 
 header {
-    animation: fadeIn 0.5s ease-out;
-    animation-delay: 1s;
-    animation-fill-mode: backwards;
-    animation-direction: normal;
+  animation: fadeIn 0.5s ease-out;
+  animation-delay: 1s;
+  animation-fill-mode: backwards;
+  animation-direction: normal;
 }
 
 .signup-box {
-    animation: fadeIn 0.5s ease-out;
-    animation-delay: 1s;
-    animation-fill-mode: backwards;
-    animation-direction: normal;
+  animation: fadeIn 0.5s ease-out;
+  animation-delay: 1s;
+  animation-fill-mode: backwards;
+  animation-direction: normal;
 }
 
 .elementToFadeInAndOut {
-    animation: fadeOut 0.5s ease-in
+  animation: fadeOut 0.5s ease-in
 }
 
 .headerToFadeInAndOut {
-    animation: fadeOut 0.5s ease-in;
+  animation: fadeOut 0.5s ease-in;
 }
 
 .backgroundToFadeInAndOut {
-    animation: fadeOut 0.5s ease-in;
-    background-color: white
+  animation: fadeOut 0.5s ease-in;
+  background-color: white
 }
 
 .signup-box {
