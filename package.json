@@ -4,7 +4,7 @@
   "description": "Habit Tracker app",
   "main": "./assets/static/js/script.js",
   "scripts": {
-    "test": "jest --watchAll"
+    "test": "jest --coverage --watchAll"
   },
   "repository": {
     "type": "git",

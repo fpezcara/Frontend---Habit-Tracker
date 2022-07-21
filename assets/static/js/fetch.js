@@ -1,9 +1,13 @@
 const requestLogin = async (e) => {
   e.preventDefault();
-
+  console.log(Object.fromEntries(new FormData(e.target)));
   try {
     const options = {
       method: "POST",
+      // headers: new Headers({
+      //   "authorization": "Token",
+      //   "Content-Type": "application/json",
+      // }),
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(Object.fromEntries(new FormData(e.target))),
     };
@@ -12,14 +16,15 @@ const requestLogin = async (e) => {
       options
     );
 
-    console.log(r)
-
     const data = await r.json();
 
     if (data.err) {
+      console.log(data.err);
       throw Error(data.err);
     }
-    console.log("data", data);
+  
+    login(data);
+
   } catch (err) {
     console.warn(`Error: ${err}`);
   }
@@ -46,8 +51,22 @@ const requestRegistration = async (e) => {
     if (data.err) {
       throw Error(data.err);
     }
+    console.log("response", r);
     console.log("data", data);
   } catch (err) {
     console.warn(`Error: ${err}`);
   }
+};
+
+const requestAllHabits = async (e) => {
+  e.preventDefault();
+};
+
+const createNewHabit = async (e) => {
+  e.preventDefault();
+  console.log(Object.fromEntries(new FormData(e.target)));
+};
+
+const requestProfileInfo = async (e) => {
+  e.preventDefault();
 };
