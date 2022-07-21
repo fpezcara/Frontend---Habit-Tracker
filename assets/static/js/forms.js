@@ -182,7 +182,7 @@ const renderHabitsForm = () => {
       attributes: {
         type: "date",
         id: "initialDate",
-        name: "end_date",
+        name: "initial_date",
         class: "datePicker",
       },
       label: { text: "Start Date", for: "initialDate" },
@@ -282,14 +282,11 @@ function updateNav() {
 }
 
 const login = (data) => {
+
   console.log("Console log from /forms/login - LOGIN", data.token);
+  
   localStorage.setItem('token', data.token);
-  // const payload = jwt_decode(data.token);
-  // console.log(data);
-  // console.log(payload);
-  // localStorage.setItem("token", data.token);
-  // localStorage.setItem("username", payload.username);
-  // localStorage.setItem("email", payload.email);
+
   updateNav();
   location.hash = "#home";
 };
