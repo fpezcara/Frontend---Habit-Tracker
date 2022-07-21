@@ -13,4 +13,12 @@ describe('index.html', () => {
         let nav = document.querySelector('nav');
         expect(nav).toBeTruthy();
     })
+    test('it has a ul', () => {
+        let ul = document.querySelector('.links');
+        expect(ul).toBeTruthy();
+    })
+    test('it has a logo', () => {
+        let logo = document.querySelector('.logo');
+        expect(logo).toBeTruthy();
+    })
 })
