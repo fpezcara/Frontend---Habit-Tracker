@@ -340,15 +340,13 @@ const renderSingleHabit = async () => {
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.id = "checkbox";
-    checkbox.checked = d.isCompleted ? true : false;
+    // checkbox.checked = d.isCompleted === 1 ? checkbox.checked : !checkbox.checked;
     tdThree.appendChild(checkbox);
     trTB.append(tdOne, tdTwo, tdThree);
     tableBody.appendChild(trTB);
 
     checkbox.addEventListener("change", (e) => {
-      const isCompleted = d.completed ? 1 : 0;
-      console.log(isCompleted);
-      completeForTheDay(isCompleted);
+      completeForTheDay(d.completed, d.daily_habit_id, habit);
       // completeForTheDay()
     });
   });
