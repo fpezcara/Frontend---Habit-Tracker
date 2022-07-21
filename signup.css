@@ -314,10 +314,9 @@ p {
 
 #new-habit {
   color: black;
-  position: absolute;
-  /* right: 10%; */
-  top: 10%;
-  left: 70%;
+ float: right;
+ margin-top: -73px;
+ margin-right: 6.8%;
   text-transform: uppercase;
   padding: .7em 0.5em;
   text-decoration: none;
