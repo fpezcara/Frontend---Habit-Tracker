@@ -99,7 +99,14 @@ const renderRegistrationForm = () => {
         placeholder: "Password",
       },
     },
-
+    // {
+    //   tag: "input",
+    //   attributes: {
+    //     type: "password",
+    //     name: "passwordConfirmation",
+    //     placeholder: "Confirm Password",
+    //   },
+    // },
     { tag: "input", attributes: { type: "submit", value: "Register" } },
   ];
   const formContainer = document.createElement("div");
@@ -243,7 +250,6 @@ const renderHabits = async () => {
   const showAllHabits = (habitData) => {
     const habitContainer = document.createElement("div");
     habitContainer.className = "habit-box";
-    habitContainer.id = habitData.user_habit_id
     const habitName = document.createElement("h3");
     habitName.textContent = habitData.habit_name;
     const habitGoalTitle = document.createElement("p");
@@ -283,31 +289,13 @@ const renderHabits = async () => {
       habitQuantityContent,
       habitBtn
     );
-
     habitRenderedContainer.appendChild(habitContainer);
-
   };
 
   habits.forEach(showAllHabits);
   main.append(h2, newHabitLink, habitRenderedContainer);
 
-  const btns = document.querySelectorAll('.habit-box')
-
-  btns.forEach((element) => {
-    element.addEventListener('click', async (e) => {
-
-      const user_habit_id = e.composedPath()[1].id
-
-      const days_habits_data = await getDaysOfHabits(user_habit_id)
-
-      console.log(days_habits_data)
-      
-      
-
-    })
-  })
-
-
+  // main.innerHTML = renderPosts;
 };
 
 const renderSingleHabit = async () => {
@@ -316,7 +304,7 @@ const renderSingleHabit = async () => {
   const header = document.createElement("div");
   header.id = "singleHabitHeader";
   const h2 = document.createElement("h2");
-  h2.textContent = `Hello, ${daysOfHabits[0]}`;
+  h2.textContent = `Hello, ${daysOfHabits[0].firstname}`;
   const habitProgress = document.createElement("p");
   habitProgress.textContent = "Check your habit progress:";
   const habitName = document.createElement("span");
@@ -393,6 +381,7 @@ const login = (data) => {
 };
 
 const logout = () => {
+  // localStorage.clear();
   location.hash = "#login";
   navBar.innerHTML = `
   <li><a href="#login" class="login">Login</a></li>
