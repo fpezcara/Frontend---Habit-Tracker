@@ -99,14 +99,7 @@ const renderRegistrationForm = () => {
         placeholder: "Password",
       },
     },
-    // {
-    //   tag: "input",
-    //   attributes: {
-    //     type: "password",
-    //     name: "passwordConfirmation",
-    //     placeholder: "Confirm Password",
-    //   },
-    // },
+
     { tag: "input", attributes: { type: "submit", value: "Register" } },
   ];
   const formContainer = document.createElement("div");
@@ -284,7 +277,7 @@ function updateNav() {
 const login = (data) => {
 
   console.log("Console log from /forms/login - LOGIN", data.token);
-  
+
   localStorage.setItem('token', data.token);
 
   updateNav();

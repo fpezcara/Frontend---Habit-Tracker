@@ -1,19 +1,14 @@
 const requestLogin = async (e) => {
   e.preventDefault();
-  // console.log(Object.fromEntries(new FormData(e.target)));
+
   try {
     const options = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(Object.fromEntries(new FormData(e.target))),
     };
-    // const r = await fetch(
-    //   "https://optimizeprime-api.herokuapp.com/auth/login",
-    //   options
-    // );
-
     const r = await fetch(
-      "http://localhost:3000/auth/login",
+      "https://optimizeprime-api.herokuapp.com/auth/login",
       options
     );
 
@@ -41,7 +36,7 @@ const requestRegistration = async (e) => {
       body: JSON.stringify(Object.fromEntries(new FormData(e.target))),
     };
     const r = await fetch(
-      `http://localhost:3000/auth/register`,
+      `https://optimizeprime-api.herokuapp.com/auth/register`,
       options
     );
 
@@ -59,7 +54,7 @@ const requestRegistration = async (e) => {
 };
 
 const requestAllHabits = async () => {
-  const habits = await fetch(`http://localhost:3000/habits`);
+  const habits = await fetch(`https://optimizeprime-api.herokuapp.com/habits`);
 
   const response = response.json();
   console.log("HABTIS", response);
@@ -76,12 +71,8 @@ const createNewHabit = async (e) => {
       ),
       body: JSON.stringify(Object.fromEntries(new FormData(e.target))),
     };
-    // const r = await fetch(
-    //   `https://optimizeprime-api.herokuapp.com/habits/new-habit`,
-    //   options
-    // );
     const r = await fetch(
-      `http://localhost:3000/habits/new-habit`,
+      `https://optimizeprime-api.herokuapp.com/habits/new-habit`,
       options
     );
     // console.log("rrrrr", r)
@@ -97,24 +88,6 @@ const createNewHabit = async (e) => {
   }
 };
 
-// e.preventDefault();
-// try {
-//     const options = {
-//         method: 'POST',
-//         headers: { "Content-Type": "application/json" },
-//         body: JSON.stringify(Object.fromEntries(new FormData(e.target)))
-//     }
-
-//     const response = await fetch('http://localhost:3000/books', options);
-//     const { id, err } = await response.json();
-//     if(err) {
-//         throw Error(err)
-//     } else {
-//         window.location.hash = `#books/${id}`
-//     }
-// } catch (err) {
-//     console.warn(err);
-// }
 
 const requestProfileInfo = async (e) => {
   e.preventDefault();
