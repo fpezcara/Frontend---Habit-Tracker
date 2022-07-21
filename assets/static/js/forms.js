@@ -346,7 +346,9 @@ const renderSingleHabit = async () => {
     tableBody.appendChild(trTB);
 
     checkbox.addEventListener("change", (e) => {
-      completeForTheDay(d.completed, d.daily_habit_id, habit);
+      console.log(e.target.checked);
+      e.target.checked &&
+        completeForTheDay(e.target.checked, d.daily_habit_id, habit);
       // completeForTheDay()
     });
   });
