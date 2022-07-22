@@ -298,8 +298,12 @@ p {
 }
 
 #new-habit {
+  float: right;
+  margin-top: -73px;
+  margin-right: 6.8%;
   position: absolute;
-  top: 17%;
+  margin-top: 3%;
+  top: 10%;
   left: 70%;
   text-transform: uppercase;
   padding: .7em 0.5em;
@@ -307,7 +311,7 @@ p {
   border-radius: 1em;
   width: 8em;
   text-align: center;
-  background: #03e9f4;
+  background: rgb(128, 121, 191);
   box-shadow: #003a3d;
   font-family: Orbitron, sans-serif;
   font-weight: 500;
@@ -319,8 +323,22 @@ p {
   animation-delay: .25s
 }
 
+#new-habit:hover {
+  background: #03e9f4;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #03e9f4,
+    0 0 25px #03e9f4,
+    0 0 50px #03e9f4,
+    0 0 100px #03e9f4;
+}
+
 .habit-goal {
   color: #fff;
+  border-radius: 10px;
+  width: 25%;
+  text-align: center;
+  padding-bottom: 30px;
 
 }
 
@@ -333,15 +351,16 @@ p {
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
   border-radius: 10px;
-  width: 20%;
+  width: 25%;
   text-align: center;
+  padding-bottom: 1.5%;
 }
 
 #habitRenderedContainer {
   display: flex;
-  /* flex-direction: column; */
   justify-content: space-evenly;
   align-items: center;
+  margin-top: 40px;
   gap: 4em;
 }
 
@@ -361,4 +380,46 @@ p {
 
 #singleHabitHeader span {
   color: #03e9f4;
+}
+
+
+.check-days {
+  font-size: 12px;
+  text-transform: uppercase;
+  padding: .7em 0.5em;
+  text-decoration: none;
+  border-radius: 1em;
+  width: 11em;
+  text-align: center;
+  background: #03e9f4;
+  box-shadow: #003a3d;
+  font-family: Orbitron, sans-serif;
+  font-weight: 500;
+  color: #fff;
+  transition: .8s;
+  animation: fadeIn 1s ease-out;
+  animation-fill-mode: backwards;
+  animation-direction: normal;
+  animation-delay: .25s;
+  border: 2px solid rgb(128, 121, 191);
+  background: transparent;
+}
+
+.check-days:hover {
+  border: 2px solid #03e9f4;
+  background: #03e9f4;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #03e9f4,
+    0 0 25px #03e9f4,
+    0 0 50px #03e9f4,
+    0 0 100px #03e9f4;
+}
+
+h2 {
+  transition: .8s;
+  animation: fadeIn 1s ease-out;
+  animation-fill-mode: backwards;
+  animation-direction: normal;
+  animation-delay: .25s
 }

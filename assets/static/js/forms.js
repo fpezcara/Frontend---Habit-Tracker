@@ -269,10 +269,11 @@ const renderHabits = async () => {
     habitQuantityContent.textContent = habitData.quantity;
     const habitBtn = document.createElement("a");
     habitBtn.textContent = "Check your Days";
+    habitBtn.className = "check-days"
     habitBtn.href = "#habit";
     habitBtn.id = habitData.user_habit_id;
 
-    habitBtn.addEventListener("click", (e) => {
+    habitBtn.addEventListener("click", () => {
       localStorage.setItem("habit_id", habitData.user_habit_id);
     });
 
@@ -312,7 +313,6 @@ const renderSingleHabit = async () => {
     ? `Habit: ${daysOfHabits[0].habit_name}`
     : "";
 
-  console.log(h2);
   header.append(h2, habitProgress, habitName);
   const table = document.createElement("table");
   const tableHeader = document.createElement("thead");
@@ -349,7 +349,6 @@ const renderSingleHabit = async () => {
   });
 
   table.append(tableHeader, tableBody);
-  console.log(table);
 
   main.append(header, table);
 };
@@ -388,15 +387,10 @@ const login = (data) => {
 };
 
 const logout = () => {
-  // localStorage.clear();
+  localStorage.clear();
   location.hash = "#login";
   navBar.innerHTML = `
   <li><a href="#login" class="login">Login</a></li>
   <li><a href="#signup" class="sign-up">Sign Up</a></li>
   `;
-};
-
-const currentUser = () => {
-  // const username = localStorage.getItem("username");
-  //return username;
 };
