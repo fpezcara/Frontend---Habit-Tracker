@@ -1,13 +1,16 @@
 const requestLogin = async (e) => {
   e.preventDefault();
-
   try {
     const options = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(Object.fromEntries(new FormData(e.target))),
     };
-    const r = await fetch(`http://localhost:3000/auth/login`, options);
+
+    const r = await fetch(
+      `https://optimizeprime-api.herokuapp.com/auth/login`,
+      options
+    );
 
     const data = await r.json();
 
@@ -15,9 +18,8 @@ const requestLogin = async (e) => {
       console.log(data.err);
       throw Error(data.err);
     }
-    console.log("data", data);
+
     login(data);
-    //*We need to create the authorisation so then this function will takes us to the #feed or #habits
   } catch (err) {
     console.warn(`Error: ${err}`);
   }
@@ -25,37 +27,121 @@ const requestLogin = async (e) => {
 
 const requestRegistration = async (e) => {
   e.preventDefault();
-  console.log(Object.fromEntries(new FormData(e.target)));
-  //**this route is not working */
+
   try {
     const options = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(Object.fromEntries(new FormData(e.target))),
     };
-    const r = await fetch(`http://localhost:3000/auth/register`, options);
+    const r = await fetch(
+      `https://optimizeprime-api.herokuapp.com/auth/register`,
+      options
+    );
 
-    // console.log("rrrrr", r)
     const data = await r.json();
 
     if (data.err) {
       throw Error(data.err);
     }
-    console.log("data", data);
+    location.hash = "#login";
+
+    return data.msg;
   } catch (err) {
     console.warn(`Error: ${err}`);
   }
 };
 
-const requestAllHabits = async (e) => {
-  e.preventDefault();
-};
-
 const createNewHabit = async (e) => {
   e.preventDefault();
   console.log(Object.fromEntries(new FormData(e.target)));
+  try {
+    const options = {
+      method: "POST",
+      headers: new Headers({
+        authorization: localStorage.getItem("token"),
+        "Content-Type": "application/json",
+      }),
+      body: JSON.stringify(Object.fromEntries(new FormData(e.target))),
+    };
+    const r = await fetch(
+      `https://optimizeprime-api.herokuapp.com/habits/new-habit`,
+      options
+    );
+    const data = await r.json();
+    if (data.err) {
+      throw Error(data.err);
+    } else {
+      location.hash = "#home";
+    }
+  } catch (err) {
+    console.warn(`Error: ${err}`);
+  }
+};
+
+const requestAllHabits = async () => {
+  try {
+    const options = {
+      headers: new Headers({ authorization: localStorage.getItem("token") }),
+    };
+
+    const response = await fetch(
+      `https://optimizeprime-api.herokuapp.com/habits`,
+      options
+    );
+
+    const habits = await response.json();
+
+    return habits;
+  } catch (error) {
+    console.warn(`Error: ${error}`);
+  }
+};
+
+const getDaysOfHabits = async (user_habit_id) => {
+  try {
+    const options = {
+      headers: new Headers({ authorization: localStorage.getItem("token") }),
+    };
+
+    const response = await fetch(
+      `https://optimizeprime-api.herokuapp.com/habits/days/${user_habit_id}`,
+      options
+    );
+
+    const habitsDays = await response.json();
+
+    return habitsDays;
+  } catch (error) {
+    console.warn(`Error: ${error}`);
+  }
 };
 
 const requestProfileInfo = async (e) => {
   e.preventDefault();
+};
+
+const completeForTheDay = async (user_habit_id, daily_habit_id) => {
+  const completed = 1;
+  const obj = { completed, user_habit_id, daily_habit_id };
+  console.log(obj);
+  try {
+    const options = {
+      method: "POST",
+      headers: new Headers({
+        authorization: localStorage.getItem("token"),
+        "Content-Type": "application/json",
+      }),
+      body: JSON.stringify(obj),
+    };
+    const response = await fetch(
+      `https://optimizeprime-api.herokuapp.com/habits/setday`,
+      options
+    );
+
+    const habitsDays = await response.json();
+    return habitsDays;
+  } catch (err) {
+    console.warn(`Error: ${err}`);
+  }
 };

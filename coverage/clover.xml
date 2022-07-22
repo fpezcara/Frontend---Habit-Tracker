@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1658421492901" clover="3.2.0">
-  <project timestamp="1658421492901" name="All files">
+
+<coverage generated="1658431469901" clover="3.2.0">
+  <project timestamp="1658431469902" name="All files">
+
     <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3" elements="13" coveredelements="13" complexity="0" loc="10" ncloc="10" packages="1" files="1" classes="1"/>
     <file name="helpers.js" path="C:\Users\fpezc\Desktop\Programacion\FutureProof\Lessons\2nd LAP\3rd Week - Project\Frontend-Habit-Tracker\testing\helpers.js">
       <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
@@ -8,11 +10,13 @@
       <line num="2" count="1" type="stmt"/>
       <line num="3" count="1" type="stmt"/>
       <line num="5" count="1" type="stmt"/>
-      <line num="6" count="3" type="stmt"/>
-      <line num="8" count="3" type="stmt"/>
-      <line num="13" count="3" type="stmt"/>
-      <line num="14" count="3" type="stmt"/>
-      <line num="15" count="3" type="stmt"/>
+
+      <line num="6" count="7" type="stmt"/>
+      <line num="8" count="7" type="stmt"/>
+      <line num="13" count="7" type="stmt"/>
+      <line num="14" count="7" type="stmt"/>
+      <line num="15" count="7" type="stmt"/>
+
       <line num="20" count="1" type="stmt"/>
     </file>
   </project>

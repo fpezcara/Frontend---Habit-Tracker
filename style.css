@@ -1,6 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
 
-html, body {
+html,
+body {
     height: 100%;
     background-color: #f6f6f9;
     animation: fadeIn 1s ease-out;
@@ -13,7 +14,6 @@ body {
     padding: 0;
     box-sizing: border-box;
     background-color: #141e30;
-    /*background: linear-gradient(#141e30, #243b55); */
 }
 
 header {
@@ -94,13 +94,6 @@ header {
     padding-bottom: 6px;
 }
 
-.links li a.logout {
-    color: rgb(128, 121, 191);
-    font-size: 15px;
-    transition: all 0.35s linear 0s;
-    font-family: Orbitron, sans-serif;
-}
-
 #isChecked {
     display: none;
 }
@@ -123,4 +116,43 @@ header {
 
 .noDisplay {
     display: none;
+}
+
+
+table {
+    border-spacing: 1;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 6px;
+    overflow: hidden;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    color: rgb(0, 0, 0.5);
+    text-align: center;
+    font-family: Orbitron, sans-serif;
+    font-weight: lighter;
+}
+
+thead tr {
+    height: 60px;
+    background: rgb(128, 121, 191);
+    font-size: 16px;
+}
+
+
+tbody tr {
+    height: 48px;
+    border-bottom: 1px solid rgb(50, 50, 50.8);
+
+}
+
+#errorPage {
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20%;
+
 }

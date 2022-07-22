@@ -99,14 +99,7 @@ const renderRegistrationForm = () => {
         placeholder: "Password",
       },
     },
-    // {
-    //   tag: "input",
-    //   attributes: {
-    //     type: "password",
-    //     name: "passwordConfirmation",
-    //     placeholder: "Confirm Password",
-    //   },
-    // },
+
     { tag: "input", attributes: { type: "submit", value: "Register" } },
   ];
   const formContainer = document.createElement("div");
@@ -148,19 +141,32 @@ const renderHabitsForm = () => {
       tag: "input",
       attributes: {
         type: "text",
-        name: "newHabit",
-        placeholder: "Enter new habit",
-        id: "newHabit",
+        name: "habit_name",
+        placeholder: "Enter your habit name",
       },
     },
-    // { tag: "label", for: "newHabit" },
     {
       tag: "input",
       attributes: {
         type: "number",
-        name: "nOfRepetitions",
-        placeholder: "Enter number of repetitions",
-        id: "nOfRepetitions",
+        name: "goal",
+        placeholder: "Enter your goal",
+      },
+    },
+    {
+      tag: "input",
+      attributes: {
+        type: "number",
+        name: "quantity",
+        placeholder: "Enter quantity",
+      },
+    },
+    {
+      tag: "input",
+      attributes: {
+        type: "number",
+        name: "frequency",
+        placeholder: "Enter frequency",
       },
     },
     {
@@ -168,7 +174,7 @@ const renderHabitsForm = () => {
       attributes: {
         type: "date",
         id: "initialDate",
-        name: "end_date",
+        name: "initial_date",
         class: "datePicker",
       },
       label: { text: "Start Date", for: "initialDate" },
@@ -200,7 +206,7 @@ const renderHabitsForm = () => {
     const fieldContainer = document.createElement("div");
     const labelTag = document.createElement("label");
 
-    fieldContainer.className = "user-box";
+    fieldContainer.className = "user-box newHabitUserBox";
     Object.entries(attributes).forEach(([a, v]) => {
       field.setAttribute(a, v);
       fieldContainer.appendChild(field);
@@ -214,80 +220,161 @@ const renderHabitsForm = () => {
     });
 
     label && fieldContainer.appendChild(labelTag);
-    console.log(fieldContainer);
   });
 
   form.addEventListener("submit", createNewHabit);
   main.appendChild(formContainer);
-
-  console.log(main);
 };
 
-const login = (data) => {
-  // localStorage.setItem('username', data.user);
-  // const payload = jwt_decode(data.token);
-  // console.log(data);
-  // console.log(payload);
-  // localStorage.setItem("token", data.token);
-  // localStorage.setItem("username", payload.username);
-  // localStorage.setItem("email", payload.email);
-  console.log(data);
-  updateNav();
-  location.hash = "#home";
+const renderHabits = async () => {
+  const habitRenderedContainer = document.createElement("section");
+  habitRenderedContainer.id = "habitRenderedContainer";
+  const h2 = document.createElement("h2");
+  h2.textContent = "Your goals!";
+  h2.id = "renderHabitsh2";
+  const newHabitLink = document.createElement("a");
+  newHabitLink.href = "#new-habit";
+  newHabitLink.id = "new-habit";
+  newHabitLink.textContent = "new habit";
+
+  const habits = await requestAllHabits();
+
+  const showAllHabits = (habitData) => {
+    const habitContainer = document.createElement("div");
+    habitContainer.className = "habit-box";
+    const habitName = document.createElement("h3");
+    habitName.textContent = habitData.habit_name;
+    const habitGoalTitle = document.createElement("p");
+    habitGoalTitle.textContent = "Goal: ";
+    const habitGoalContent = document.createElement("p");
+    habitGoalContent.textContent = habitData.goal;
+    const habitStartDateTitle = document.createElement("p");
+    habitStartDateTitle.textContent = "When does it start?";
+    const habitStartDateContent = document.createElement("p");
+    habitStartDateContent.textContent = habitData.initial_date;
+    const habitEndDateTitle = document.createElement("p");
+    habitEndDateTitle.textContent = "When does it end?";
+    const habitEndDateContent = document.createElement("p");
+    habitEndDateContent.textContent = habitData.end_date;
+    const habitQuantityTitle = document.createElement("p");
+    habitQuantityTitle.textContent = "How's today looking? ";
+    const habitQuantityContent = document.createElement("p");
+    habitQuantityContent.textContent = habitData.quantity;
+    const habitBtn = document.createElement("a");
+    habitBtn.textContent = "Check your Days";
+    habitBtn.className = "check-days"
+    habitBtn.href = "#habit";
+    habitBtn.id = habitData.user_habit_id;
+
+    habitBtn.addEventListener("click", () => {
+      localStorage.setItem("habit_id", habitData.user_habit_id);
+    });
+
+    habitContainer.append(
+      habitName,
+      habitGoalTitle,
+      habitGoalContent,
+      habitStartDateTitle,
+      habitStartDateContent,
+      habitEndDateTitle,
+      habitEndDateContent,
+      habitQuantityTitle,
+      habitQuantityContent,
+      habitBtn
+    );
+    habitRenderedContainer.appendChild(habitContainer);
+  };
+
+  habits.forEach(showAllHabits);
+  main.append(h2, newHabitLink, habitRenderedContainer);
+
 };
 
-const renderHabits = () => {
-  main.innerHTML = `
-  <div class="signup-box habits">
-    <h2>Your Goals!</h2>
+const renderSingleHabit = async () => {
+  const habit = localStorage.getItem("habit_id");
+  const daysOfHabits = await getDaysOfHabits(habit);
+  const header = document.createElement("div");
+  header.id = "singleHabitHeader";
+  const h2 = document.createElement("h2");
+  h2.textContent = daysOfHabits[0]
+    ? `Hello, ${daysOfHabits[0].firstname}`
+    : "Hello";
+  const habitProgress = document.createElement("p");
+  habitProgress.textContent = "Check your habit progress:";
+  const habitName = document.createElement("span");
+  habitName.textContent = daysOfHabits[0]
+    ? `Habit: ${daysOfHabits[0].habit_name}`
+    : "";
 
-        <p>Habit:</p>
-        <p class="habit-name">Water Intake</p><br>
+  header.append(h2, habitProgress, habitName);
+  const table = document.createElement("table");
+  const tableHeader = document.createElement("thead");
+  const trTH = document.createElement("tr");
+  const tHead = ["Goal", "Day No.", "Completed"];
 
-        <p>Goal:</p>
-        <p class="habit-goal">5 Cups Per Day</p><br>
+  tHead.forEach((cont) => {
+    const th = document.createElement("th");
+    th.textContent = cont;
+    trTH.appendChild(th);
+  });
+  tableHeader.appendChild(trTH);
+  const tableBody = document.createElement("tbody");
+  let trTB;
+  daysOfHabits.forEach((d) => {
+    trTB = document.createElement("tr");
 
-        <p>How Long For:</p>
-        <p class="habit-duration">A Week</p><br>
+    const tdOne = document.createElement("td");
+    tdOne.textContent = d.goal;
+    const tdTwo = document.createElement("td");
+    tdTwo.textContent = d.daily_habit_id;
+    const tdThree = document.createElement("td");
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.id = "checkbox";
+    checkbox.checked = d.completed == 1 ? !checkbox.checked : checkbox.checked;
+    tdThree.appendChild(checkbox);
+    trTB.append(tdOne, tdTwo, tdThree);
+    tableBody.appendChild(trTB);
 
-        <p>How's Today Looking?</p>
-        <p class="habit-amount">3 Cups</p>
-   </div>
- 
-   <a href="#new-habit" id="new-habit">new habit</a>
-  
-  `;
-};
+    checkbox.addEventListener("change", (e) => {
+      e.target.checked && completeForTheDay(habit, d.daily_habit_id);
+    });
+  });
 
-const currentUser = () => {
-  const username = localStorage.getItem("username");
-  return username;
+  table.append(tableHeader, tableBody);
+
+  main.append(header, table);
 };
 
 const render404 = () => {
+  const errorPage = document.createElement("div");
+  errorPage.id = "errorPage";
   const error = document.createElement("h2");
   error.textContent = "Oops, we can't find that page sorry!";
-  main.appendChild(error);
+  errorPage.appendChild(error);
+  main.appendChild(errorPage);
 };
 
-const renderProfile = () => {
-  main.innerHTML = `
-  <h2>Welcome to your profile!</h2>
-  <p>Profile information</p>
-  `;
-};
+
 
 const navBar = document.querySelector(".links");
 function updateNav() {
   navBar.innerHTML = `
   <li><a href="#home" class="sign-up">Home</a></li>
-  <li><a href="#profile" class="sign-up">Profile</a></li>
-  <li><a href="#logout" class="logout">Logout</a></li>
+  <li><a href="#logout" class="sign-up">Logout</a></li>
   `;
 }
 
+const login = (data) => {
+  console.log(data)
+  const payload = jwt_decode(data.token);
+  localStorage.setItem("token", data.token);
+  updateNav();
+  location.hash = "#home";
+};
+
 const logout = () => {
-  // localStorage.clear();
+  localStorage.clear();
   location.hash = "#login";
   navBar.innerHTML = `
   <li><a href="#login" class="login">Login</a></li>

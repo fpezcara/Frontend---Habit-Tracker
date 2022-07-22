@@ -4,7 +4,6 @@ const updateHomepage = (hash) => {
   main.innerHTML = "";
   switch (hash) {
     case "#login":
-    case "#":
       renderLoginForm();
       break;
     case "#signup":
@@ -16,8 +15,8 @@ const updateHomepage = (hash) => {
     case "#new-habit":
       renderHabitsForm();
       break;
-    case "#profile":
-      renderProfile();
+    case "#habit":
+      renderSingleHabit();
       break;
     case "#logout":
       logout();
@@ -30,4 +29,9 @@ const updateHomepage = (hash) => {
 window.addEventListener("hashchange", () => {
   let hash = window.location.hash;
   updateHomepage(hash);
+});
+
+//setting hash to change to login on load of screen
+window.addEventListener("load", () => {
+  location.hash = "#login";
 });
