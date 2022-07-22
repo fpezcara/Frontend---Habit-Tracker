@@ -152,7 +152,6 @@ const renderHabitsForm = () => {
         placeholder: "Enter your habit name",
       },
     },
-    // { tag: "label", for: "newHabit" },
     {
       tag: "input",
       attributes: {
@@ -244,7 +243,7 @@ const renderHabits = async () => {
   newHabitLink.href = "#new-habit";
   newHabitLink.id = "new-habit";
   newHabitLink.textContent = "new habit";
-  // <a href="#new-habit" id="new-habit">new habit</a>
+
   const habits = await requestAllHabits();
 
   const showAllHabits = (habitData) => {
@@ -295,7 +294,6 @@ const renderHabits = async () => {
   habits.forEach(showAllHabits);
   main.append(h2, newHabitLink, habitRenderedContainer);
 
-  // main.innerHTML = renderPosts;
 };
 
 const renderSingleHabit = async () => {
@@ -340,57 +338,29 @@ const renderSingleHabit = async () => {
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.id = "checkbox";
-    checkbox.checked =
-      d.completed == 1 ? !checkbox.checked : checkbox.checked;
+    checkbox.checked = d.completed == 1 ? !checkbox.checked : checkbox.checked;
     tdThree.appendChild(checkbox);
     trTB.append(tdOne, tdTwo, tdThree);
     tableBody.appendChild(trTB);
 
     checkbox.addEventListener("change", (e) => {
-      console.log(e.target.checked);
       e.target.checked && completeForTheDay(habit, d.daily_habit_id);
-      // completeForTheDay()
     });
   });
 
-  //  <div>
-  //  <h2>Hi, Allan</h2> firstname
-  //  <h3>Check your habit progress</h3>
-  //<h4>Habit: Mantra</h4> daysOfHabit.habit_name
-  //  </div>
-  // <table>
-  //   <tr>
-  //     <th>Goal</th>
-  //     <th>Day Number</th>
-  //     <th>Completed</th>
-  //   </tr>
-  //   <tr>
-  //     <td>Alfreds Futterkiste</td>
-  //     <td>Maria Anders</td>
-  //     <td>Germany</td>
-  //   </tr>
-  //   <tr>
-  //     <td>Centro comercial Moctezuma</td>
-  //     <td>Francisco Chang</td>
-  //     <td>Mexico</td>
-  //   </tr>
-  // </table>;
   table.append(tableHeader, tableBody);
   console.log(table);
 
-  console.log(daysOfHabits);
-
-  //!!remember to build what happens if there's nothing to display so !daysOfHabits.length
-
-  console.log(localStorage.getItem("habit_id"));
-  console.log(header);
   main.append(header, table);
 };
 
 const render404 = () => {
+  const errorPage = document.createElement("div");
+  errorPage.id = "errorPage";
   const error = document.createElement("h2");
   error.textContent = "Oops, we can't find that page sorry!";
-  main.appendChild(error);
+  errorPage.appendChild(error);
+  main.appendChild(errorPage);
 };
 
 const renderProfile = () => {
@@ -410,10 +380,8 @@ function updateNav() {
 }
 
 const login = (data) => {
-  // localStorage.setItem('email', email);
-
+  console.log(data)
   const payload = jwt_decode(data.token);
-
   localStorage.setItem("token", data.token);
   updateNav();
   location.hash = "#home";

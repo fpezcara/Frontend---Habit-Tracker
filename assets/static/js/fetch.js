@@ -27,8 +27,7 @@ const requestLogin = async (e) => {
 
 const requestRegistration = async (e) => {
   e.preventDefault();
-  console.log(Object.fromEntries(new FormData(e.target)));
-  //**this route is not working */
+
   try {
     const options = {
       method: "POST",
@@ -40,14 +39,14 @@ const requestRegistration = async (e) => {
       options
     );
 
-    // console.log("rrrrr", r)
     const data = await r.json();
 
     if (data.err) {
       throw Error(data.err);
     }
-    console.log("response", r);
-    console.log("data", data);
+    location.hash = "#login";
+
+    return data.msg;
   } catch (err) {
     console.warn(`Error: ${err}`);
   }
@@ -81,33 +80,41 @@ const createNewHabit = async (e) => {
 };
 
 const requestAllHabits = async () => {
-  const options = {
-    headers: new Headers({ authorization: localStorage.getItem("token") }),
-  };
+  try {
+    const options = {
+      headers: new Headers({ authorization: localStorage.getItem("token") }),
+    };
 
-  const response = await fetch(
-    `https://optimizeprime-api.herokuapp.com/habits`,
-    options
-  );
+    const response = await fetch(
+      `https://optimizeprime-api.herokuapp.com/habits`,
+      options
+    );
 
-  const habits = await response.json();
+    const habits = await response.json();
 
-  return habits;
+    return habits;
+  } catch (error) {
+    console.warn(`Error: ${error}`);
+  }
 };
 
 const getDaysOfHabits = async (user_habit_id) => {
-  const options = {
-    headers: new Headers({ authorization: localStorage.getItem("token") }),
-  };
+  try {
+    const options = {
+      headers: new Headers({ authorization: localStorage.getItem("token") }),
+    };
 
-  const response = await fetch(
-    `https://optimizeprime-api.herokuapp.com/habits/days/${user_habit_id}`,
-    options
-  );
+    const response = await fetch(
+      `https://optimizeprime-api.herokuapp.com/habits/days/${user_habit_id}`,
+      options
+    );
 
-  const habitsDays = await response.json();
+    const habitsDays = await response.json();
 
-  return habitsDays;
+    return habitsDays;
+  } catch (error) {
+    console.warn(`Error: ${error}`);
+  }
 };
 
 const requestProfileInfo = async (e) => {
@@ -117,7 +124,6 @@ const requestProfileInfo = async (e) => {
 const completeForTheDay = async (user_habit_id, daily_habit_id) => {
   const completed = 1;
   const obj = { completed, user_habit_id, daily_habit_id };
-  // console.log(Object.fromEntries({}));
   console.log(obj);
   try {
     const options = {

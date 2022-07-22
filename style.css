@@ -150,7 +150,17 @@ thead tr {
     font-size: 16px;
 }
 
-tbody tr{
-    height:48px; border-bottom:1px solid rgb(50,50,50.8) ;
-   
+tbody tr {
+    height: 48px;
+    border-bottom: 1px solid rgb(50, 50, 50.8);
+
+}
+
+#errorPage {
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20%;
+
 }
