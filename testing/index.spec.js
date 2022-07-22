@@ -9,15 +9,19 @@ describe("index.html", () => {
     document = await dom.window.document;
   });
 
+
     test("it has a body", () => {
       let body = document.querySelector("body");
       expect(body).toBeTruthy();
     });
 
+
+
   test("it has a nav", () => {
     let nav = document.querySelector("nav");
     expect(nav).toBeTruthy();
   });
+
   test("it has a ul", () => {
     let ul = document.querySelector(".links");
     expect(ul).toBeTruthy();
@@ -27,10 +31,12 @@ describe("index.html", () => {
     expect(logo).toBeTruthy();
   });
 
+
   test("it has a main section", () => {
     let main = document.querySelector("main");
     expect(main).toBeTruthy();
   });
+
 
   test("it has 2 anchor tags in nav section at start", () => {
     let a = document.querySelectorAll(".links a");
@@ -42,4 +48,5 @@ describe("index.html", () => {
     let a = document.querySelectorAll(".links a");
     expect(a.length).toBe(2);
   });
+
 });
