@@ -94,13 +94,6 @@ header {
     padding-bottom: 6px;
 }
 
-.links li a.logout {
-    color: rgb(128, 121, 191);
-    font-size: 15px;
-    transition: all 0.35s linear 0s;
-    font-family: Orbitron, sans-serif;
-}
-
 #isChecked {
     display: none;
 }
@@ -136,7 +129,6 @@ table {
     width: 100%;
     margin: 0 auto;
     position: relative;
-    /* color: rgb(128, 121, 191); */
     color: rgb(0, 0, 0.5);
     text-align: center;
     font-family: Orbitron, sans-serif;
@@ -148,6 +140,7 @@ thead tr {
     background: rgb(128, 121, 191);
     font-size: 16px;
 }
+
 
 tbody tr {
     height: 48px;

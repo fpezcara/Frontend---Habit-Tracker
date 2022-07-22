@@ -99,14 +99,7 @@ const renderRegistrationForm = () => {
         placeholder: "Password",
       },
     },
-    // {
-    //   tag: "input",
-    //   attributes: {
-    //     type: "password",
-    //     name: "passwordConfirmation",
-    //     placeholder: "Confirm Password",
-    //   },
-    // },
+
     { tag: "input", attributes: { type: "submit", value: "Register" } },
   ];
   const formContainer = document.createElement("div");
@@ -362,19 +355,13 @@ const render404 = () => {
   main.appendChild(errorPage);
 };
 
-const renderProfile = () => {
-  main.innerHTML = `
-  <h2>Welcome to your profile!</h2>
-  <p>Profile information</p>
-  `;
-};
+
 
 const navBar = document.querySelector(".links");
 function updateNav() {
   navBar.innerHTML = `
   <li><a href="#home" class="sign-up">Home</a></li>
-  <li><a href="#profile" class="sign-up">Profile</a></li>
-  <li><a href="#logout" class="logout">Logout</a></li>
+  <li><a href="#logout" class="sign-up">Logout</a></li>
   `;
 }
 
